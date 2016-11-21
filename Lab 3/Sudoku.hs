@@ -11,3 +11,4 @@ Sudoku rows = [ [ Nothing | x <- [1..9] ] | x <- [1..9] ]
 
 --function that makes sure the given type is a sudoku.
 isSudoku :: Sudoku -> Bool
+--TODO: add stuff
