@@ -1,8 +1,8 @@
 import Test.QuickCheck
 
--- Part 1
+--Part 1
 
--- The power function when given the arguments n k takes k+1 steps to complete.
+--The power function when given the arguments n k takes k+1 steps to complete.
 
 --Part 2
 
