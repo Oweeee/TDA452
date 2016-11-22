@@ -16,7 +16,12 @@ allBlankSudoku = Sudoku ([ [ Nothing | x <- [1..9] ] | y <- [1..9] ])
 isSudoku :: Sudoku -> Bool
 isSudoku (Sudoku r) | (length r) == 9 &&
                       and ([((length (r !! n)) == 9) | n <- [0..8]]) &&
-                      all (< Just 10) (concat r) = True
+                      all (validSpace) (concat r) = True
+
+--Checks if a Maybe Int is either between 1 and 9 or nothing.
+validSpace :: Maybe Int -> Bool
+validSpace (Just n) = n > 0 && n < 10
+validSpace Nothing  = True
 
 -- isSolved sud checks if sud is already solved, i.e. there are no blanks
 isSolved :: Sudoku -> Bool
