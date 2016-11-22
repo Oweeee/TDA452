@@ -1,119 +1,162 @@
---BlackJack.hs
-
+{-
+size hand2
+= size (Add (Card (Numeric 2) Hearts) (Add (Card Jack Spades) Empty))        
+= 1 + size (Add (Card Jack Spades) Empty)
+= 1 + 1 + size Empty
+= 1 + 1 + 0
+= 2
+-}
 module BlackJack where
 import Cards
 import RunGame
 import System.Random
+import Test.QuickCheck hiding (shuffle)
 
-{-
-size hand2
-  = size (Add (Card (Numeric 2) Hearts) (Add (Card Jack Spades) Empty))
-  = 1 + size (Add (Card Jack Spades) Empty)
-  = 1 + 1 + size Empty
-  = 1 + 1 + 0
-  = 2
--}
 
---returns an empty hand
-empty :: Hand
+-- An empty hand
+empty :: Hand 
 empty = Empty
 
---determines wether the aces should count for 1 or 11 points
-value :: Hand -> Integer
-value hand | value' hand > 21 = (value' hand) - (10*(numberOfAces hand))
-value hand | otherwise        = value' hand
+hand1 = 
+	(
+	(Add (Card Jack Hearts)
+	(Add (Card (Numeric 8) Spades)
+	(Add (Card (Numeric 3) Clubs) 
+	Empty)
+	)))
 
---calculates the value of a hand
-value' :: Hand -> Integer
-value' Empty           = 0
-value' (Add card hand) = (valueCard card) + (value' hand)
+hand2 = fullDeck
 
---returns the value of a given rank
+hand3 = (Add (Card (Numeric 2) Hearts) Empty)
+
+-- Returns the numerical value corresponding to a rank
 valueRank :: Rank -> Integer
-valueRank (Numeric i)    = i
-valueRank Ace            = 11  
-valueRank _              = 10
+valueRank (Numeric r) 	= r
+valueRank Ace 			= 11
+valueRank _ 			= 10
 
---returns the value of a given card
+-- Returns the value of the cards rank
 valueCard :: Card -> Integer
-valueCard (Card rank suit) = valueRank rank
+valueCard (Card r s) = valueRank r
 
---returns the number of aces in a given hand
+-- Counts the number of aces in a given hand
 numberOfAces :: Hand -> Integer
-numberOfAces Empty = 0
-numberOfAces (Add card hand) | rank card == Ace = 1 + numberOfAces hand
-                             | otherwise        =     numberOfAces hand
+numberOfAces Empty 		= 0
+numberOfAces (Add c h) 
+	| rank c == Ace 	= 1 + numberOfAces h
+	| otherwise			= numberOfAces h
 
---calculates wether a hand results in a bust or not
+-- Adds the values of every card in a hand. 
+value :: Hand -> Integer
+value h | (value' h) > 21 	= (value' h) - (10 * (numberOfAces h))
+		| otherwise 		= value' h
+
+-- Help function for value
+value' :: Hand -> Integer
+value' Empty = 0  
+value' (Add c h) = valueCard c + value' h
+
+-- Checks if Hands value is greater than 21, if so returns True
 gameOver :: Hand -> Bool
-gameOver hand | (value hand) > 21 = True
-gameOver hand | otherwise         = False
+gameOver h  | value h > 21 	= True
+			| otherwise 	= False
 
---given two hands, determines if the guest or the bank wins
+-- Returns the winner 
 winner :: Hand -> Hand -> Player
-winner hand1 hand2 | gameOver hand1                = Bank
-winner hand1 hand2 | gameOver hand2                = Guest
-winner hand1 hand2 | (value hand1) > (value hand2) = Guest
-winner hand1 hand2 | otherwise                     = Bank
+winner h1 h2 
+	| gameOver h1	  		= Bank
+	| gameOver h2 			= Guest
+	| value h1 > value h2 	= Guest
+	| otherwise				= Bank
 
---given 2 hands, puts the first hand on top of the other
+-- Adds 2 hands together
 (<+) :: Hand -> Hand -> Hand
-Empty      <+ h2 = h2
-(Add c h1) <+ h2 = (Add c (h1 <+ h2))
+(<+) Empty h2 		= h2
+(<+) (Add c h1) h2 	= (Add c (h1 <+ h2))
 
---tests that the (<+) function adds hands on top of each other properly
 prop_onTopOf_assoc :: Hand -> Hand -> Hand -> Bool
 prop_onTopOf_assoc p1 p2 p3 =
     p1<+(p2<+p3) == (p1<+p2)<+p3
 
---tests that the (<+) function returns a hand with the correct size
 prop_size_onTopOf :: Hand -> Hand -> Bool
-prop_size_onTopOf h1 h2 = (size h1) + (size h2) == (size (h1 <+ h2))
+prop_size_onTopOf h1 h2 = (size h1) + (size h2) == (size(h1 <+ h2))
 
--- returns a full deck of cards
+
+-- Creates a full deck
 fullDeck :: Hand
-fullDeck = foldr (<+) Empty
-		   ([fullSuit suit | suit <- [Hearts, Diamonds, Clubs, Spades]])
+fullDeck = 	foldr (<+) Empty 
+			[fullSuit s | s <- [Hearts, Spades, Diamonds, Clubs]]
 
---returns every card of a suit.
+-- Help function for fullDeck. Creates a hand full of all the cards
+-- in a given suit.
 fullSuit :: Suit -> Hand
-fullSuit suit = foldr (<+) Empty 
-				([(Add (Card (Numeric n) suit) Empty) | n <-[2..10]] 
-			 ++ [(Add (Card r suit) Empty) | r <- [Jack, Queen, King, Ace]])
+fullSuit s = 	foldr (<+) Empty 
+				([Add (Card (Numeric a) s) Empty | a <- [2..10]] 
+				++ [ Add (Card r s) Empty | r <- [Jack, Queen, King, Ace]])
 
---draw the top card from the deck to a hand
+-- Draws the top card of a deck.
 draw :: Hand -> Hand -> (Hand,Hand)
-draw Empty h2 = error "draw: The deck in empty."
-draw (Add c h1) h2 = (h1,(Add c h2))
+draw (Add c h1) h2 	= ((h1),(Add c h2))
+draw Empty h2 		= error "draw: The deck is empty."
 
---plays for the bank, according to its set rules.
+-- Plays for the bank in line with the rules.
 playBank :: Hand -> Hand
-playBank deck = playBank' deck Empty
+playBank h = playBank' h Empty
 
---gets first element of a tuple
-first :: (a, b) -> a
-first (x,y) = x
-
---gets second element of a tuple
-second :: (a, b) -> b
-second (x,y) = y
-
---draws cards for the bank
+-- Help funciton for playBank. Draws until value > 16 or bust
 playBank' :: Hand -> Hand -> Hand
-playBank' deck bankHand | value bankHand >= 16  = bankHand
-						| otherwise   = playBank' (first (deck',bankHand'))
-												  (second (deck',bankHand')) 
-						where (deck',bankHand') = draw deck bankHand
+playBank' deck bankHand 
+	| value bankHand > 16 	= bankHand
+	| otherwise 			= playBank' deck' bankHand'
+  where (deck',bankHand') = draw deck bankHand
 
---shuffles a hand
+-- Shuffles a hand
 shuffle :: StdGen -> Hand -> Hand
 shuffle g Empty = Empty
-shuffle g (Add c Empty) = (Add c Empty)
-shuffle g hand = second (removeCardN hand (size hand)) (<+) (shuffle (mkStdGen (size (second (removeCardN hand (size hand))))) hand)	
-
-removeCardN :: Hand -> Integer -> (Card, Hand)
-removeCardN (Add c h) n | n == 1 = (c, h)
-removeCardN (Add c h) n | n > 1 = (c', ((Add c Empty) <+ h'))
-	where (c', h') = removeCardN h (n-1)
+shuffle g h = Add c' (shuffle g' h')
+	where 	
+		(c', h') = pickCardN h n
+		(n, g') = randomN g h 	
 
 
+--Given a StdGen and a Hand, generates a number between 1 and the deck size,
+--as well as a new StdGen
+randomN :: StdGen -> Hand -> (Integer, StdGen)
+randomN g h = randomR (1, (size h)) g
+
+
+-- Draws the card on position n and returns the card and the deck 
+-- as a Hand w/o the card.
+pickCardN :: Hand -> Integer -> (Card, Hand)
+pickCardN Empty n = error "Hand is empty"
+pickCardN (Add c h) n 
+	| n < 1 	= error "Can't pick negative card"
+	| n == 1 	= (c, h)
+	| n > 1 	= (c', ((Add c Empty) <+ h'))
+		where (c', h') = pickCardN h (n-1)
+
+prop_shuffle_sameCards :: StdGen -> Card -> Hand -> Bool
+prop_shuffle_sameCards g c h =
+    c `belongsTo` h == c `belongsTo` shuffle g h
+
+belongsTo :: Card -> Hand -> Bool
+c `belongsTo` Empty = False
+c `belongsTo` (Add c' h) = c == c' || c `belongsTo` h
+
+prop_size_shuffle :: StdGen -> Hand -> Bool
+prop_size_shuffle g Empty 	= True
+prop_size_shuffle g h 		= size h == size (shuffle g h )
+
+implementation = Interface
+  { iEmpty    = empty
+  , iFullDeck = fullDeck
+  , iValue    = value
+  , iGameOver = gameOver
+  , iWinner   = winner 
+  , iDraw     = draw
+  , iPlayBank = playBank
+  , iShuffle  = shuffle
+  }
+
+main :: IO ()
+main = runGame implementation
