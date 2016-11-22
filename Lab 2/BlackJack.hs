@@ -131,8 +131,9 @@ pickCardN :: Hand -> Integer -> (Card, Hand)
 pickCardN Empty n = error "Hand is empty"
 pickCardN (Add c h) n 
 	| n < 1 	= error "Can't pick negative card"
+	| n > size (Add c h) = error "Number can't be larger than size of hand"
 	| n == 1 	= (c, h)
-	| n > 1 	= (c', ((Add c Empty) <+ h'))
+	| n > 1 	= (c', (Add c h'))
 		where (c', h') = pickCardN h (n-1)
 
 prop_shuffle_sameCards :: StdGen -> Card -> Hand -> Bool
@@ -144,7 +145,6 @@ c `belongsTo` Empty = False
 c `belongsTo` (Add c' h) = c == c' || c `belongsTo` h
 
 prop_size_shuffle :: StdGen -> Hand -> Bool
-prop_size_shuffle g Empty 	= True
 prop_size_shuffle g h 		= size h == size (shuffle g h )
 
 implementation = Interface
