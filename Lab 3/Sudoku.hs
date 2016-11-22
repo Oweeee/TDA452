@@ -14,9 +14,9 @@ allBlankSudoku = Sudoku ([ [ Nothing | x <- [1..9] ] | y <- [1..9] ])
 -- isSudoku sud checks if sud is really a valid representation of a sudoku
 -- puzzle
 isSudoku :: Sudoku -> Bool
-isSudoku (Sudoku r) | (length r) /= 9 = False
-isSudoku (Sudoku r) | and ([((length (r !! n)) /= 9) | n <- [0..8]]) = False
---isSudoku Sudoku rows | 
+isSudoku (Sudoku r) | (length r) == 9 &&
+                      and ([((length (r !! n)) == 9) | n <- [0..8]]) &&
+                      all (< Just 10) (concat r) = True
 
 -- isSolved sud checks if sud is already solved, i.e. there are no blanks
 isSolved :: Sudoku -> Bool
