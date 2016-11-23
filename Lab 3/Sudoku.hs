@@ -1,6 +1,7 @@
 module Sudoku where
 
 import Test.QuickCheck
+import Data.Char
 
 -------------------------------------------------------------------------
 
@@ -31,7 +32,15 @@ isSolved (Sudoku r) = all (/= Nothing) (concat r)
 
 -- printSudoku sud prints a representation of the sudoku sud on the screen
 printSudoku :: Sudoku -> IO ()
-printSudoku = undefined
+printSudoku (Sudoku r) = mapM_ putStrLn (map (listToCharList) r)
+                            
+--given a maybe int, returns the desired char.
+valueToChar :: Maybe Int -> Char
+valueToChar (Just n) = chr (48 + n)
+valueToChar Nothing = '.'
+
+listToCharList :: [Maybe Int] -> [Char]
+listToCharList list = map valueToChar list
 
 -- readSudoku file reads from the file, and either delivers it, or stops
 -- if the file did not contain a sudoku
