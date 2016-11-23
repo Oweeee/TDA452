@@ -39,6 +39,7 @@ valueToChar :: Maybe Int -> Char
 valueToChar (Just n) = chr (48 + n)
 valueToChar Nothing = '.'
 
+-- Converts a list of Maybe Int to a list of Chars
 listToCharList :: [Maybe Int] -> [Char]
 listToCharList list = map valueToChar list
 
