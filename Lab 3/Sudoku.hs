@@ -120,4 +120,3 @@ blocks :: Sudoku -> [Block]
 blocks s = [a !! s| a <- [0..8]]
          ++[b !! (transpose s)| b <- [0..8]]
          ++[]
->>>>>>> f583c1c1df64e31cd1a7fab8a84bb52d15585db8
