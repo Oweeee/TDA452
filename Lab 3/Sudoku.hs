@@ -2,6 +2,7 @@ module Sudoku where
 
 import Test.QuickCheck
 import Data.Char
+import System.FilePath
 
 -------------------------------------------------------------------------
 
@@ -46,7 +47,21 @@ listToCharList list = map valueToChar list
 -- readSudoku file reads from the file, and either delivers it, or stops
 -- if the file did not contain a sudoku
 readSudoku :: FilePath -> IO Sudoku
-readSudoku = undefined
+readSudoku p | takeExtension p /= ".sud" = error "Invalid file type"
+readSudoku p = do
+        text <- readFile p
+        return (Sudoku (map listToMaybeIntList (lines text)))
+
+-- Converts a list of Chars to a list of a list of Maybe Int
+listToMaybeIntList :: [Char] -> [Maybe Int]
+listToMaybeIntList list = map charToValue list 
+
+-- Converts a Char to a Maybe Int
+charToValue :: Char -> Maybe Int
+charToValue c | c' > 48 && c' < 58 = (Just (c'-48))
+    where c' = (ord c)
+charToValue '.' = Nothing
+charToValue c | otherwise = error "invalid Char"
 
 -------------------------------------------------------------------------
 
