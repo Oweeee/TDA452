@@ -117,6 +117,33 @@ checkIfEqual n (x:xs)       | n == x    = True
 
 -- creates a list of all blocks in a sudoku
 blocks :: Sudoku -> [Block]
-blocks s = [a !! s| a <- [0..8]]
-         ++[b !! (transpose s)| b <- [0..8]]
-         ++[]
+blocks (Sudoku r) = r 
+                  ++ transpose r
+                  ++ createBox (take 3 r)
+                  ++ createBox (take 3 (drop 3 r))
+                  ++ createBox (drop 6 r)
+
+-- helper function which creates 3x3 blocks.
+createBox :: [[Maybe Int]] -> [Block]
+createBox list =    [concat (take 3 list')] 
+                 ++ [concat (take 3 (drop 3 list'))] 
+                 ++ [concat (drop 6 list')]
+    where list' = transpose list 
+
+-- Checks that blocks is of correct length and that its elements
+-- are of correct length.
+prop_blockSize :: Sudoku -> Bool
+prop_blockSize sudoku = (length (blockList) == 27) &&
+                        (all (correctLength) blockList)
+            where blockList = blocks sudoku
+
+-- helper function to check if a list has length 9.
+correctLength :: [Maybe Int] -> Bool
+correctLength list = (length list == 9)
+
+-- checks that all blocks in a sudoku does not contain the same value twice
+isOkay :: Sudoku -> Bool
+isOkay s = (isSudoku s) && (all (isOkayBlock) (blocks s))
+
+
+
