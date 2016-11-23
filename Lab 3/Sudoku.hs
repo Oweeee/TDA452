@@ -97,3 +97,11 @@ instance Arbitrary Sudoku where
        return (Sudoku rows)
 
 -------------------------------------------------------------------------
+
+blocks :: Sudoku -> [Block]
+blocks s = [a !! s| a <- [0..8]]
+         ++[b !! (transpose s)| b <- [0..8]]
+         ++[]
+
+prop_Sudoku :: Sudoku -> Bool
+prop_Sudoku s = isSudoku s
