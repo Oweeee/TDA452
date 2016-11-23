@@ -3,6 +3,7 @@ module Sudoku where
 import Test.QuickCheck
 import Data.Char
 import System.FilePath
+import Data.List
 
 -------------------------------------------------------------------------
 
@@ -96,12 +97,27 @@ instance Arbitrary Sudoku where
     do rows <- sequence [ sequence [ cell | j <- [1..9] ] | i <- [1..9] ]
        return (Sudoku rows)
 
--------------------------------------------------------------------------
 
+-- type representing 9 cells in form of a row, column or 3x3 block
+type Block = [Maybe Int]
+
+-- checks if a block is valid, meaning it does not contain the same value
+-- more than once
+isOkayBlock :: Block -> Bool
+isOkayBlock b = not (checkIfEqual x xs)
+    where (x:xs) = sort b
+
+
+-- Checks if two ints in a list are equal
+checkIfEqual :: Maybe Int -> Block -> Bool 
+checkIfEqual Nothing (x:xs)             = checkIfEqual x xs
+checkIfEqual n []                       = False  
+checkIfEqual n (x:xs)       | n == x    = True
+                            | otherwise = checkIfEqual x xs
+
+-- creates a list of all blocks in a sudoku
 blocks :: Sudoku -> [Block]
 blocks s = [a !! s| a <- [0..8]]
          ++[b !! (transpose s)| b <- [0..8]]
          ++[]
-
-prop_Sudoku :: Sudoku -> Bool
-prop_Sudoku s = isSudoku s
+>>>>>>> f583c1c1df64e31cd1a7fab8a84bb52d15585db8
