@@ -36,6 +36,7 @@ isSudoku :: Sudoku -> Bool
 isSudoku (Sudoku r) | (length r) == 9 &&
                       and ([((length (r !! n)) == 9) | n <- [0..8]]) &&
                       (all (validSpace) (concat r)) = True
+                    | otherwise = False
 
 --Checks if a Maybe Int is either between 1 and 9 or nothing.
 validSpace :: Maybe Int -> Bool
