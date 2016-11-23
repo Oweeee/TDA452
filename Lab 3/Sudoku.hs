@@ -85,7 +85,10 @@ charToValue c | otherwise = error "invalid Char"
 
 -- cell generates an arbitrary cell in a Sudoku
 cell :: Gen (Maybe Int)
-cell = undefined
+cell = frequency [(1,numbers),(9, nothing)]
+    where 
+        numbers = elements [ Just a | a <- [1..9]]
+        nothing = elements [Nothing]
 
 -- an instance for generating Arbitrary Sudokus
 instance Arbitrary Sudoku where
