@@ -103,26 +103,26 @@ draw Empty h2 		= error "draw: The deck is empty."
 playBank :: Hand -> Hand
 playBank h = playBank' h Empty
 
--- Help funciton for playBank. Draws until value > 16 or bust
+-- Help funciton for playBank. Draws until value >= 16 or bust
 playBank' :: Hand -> Hand -> Hand
 playBank' deck bankHand 
-	| value bankHand > 16 	= bankHand
+	| value bankHand >= 16 	= bankHand
 	| otherwise 			= playBank' deck' bankHand'
-  where (deck',bankHand') = draw deck bankHand
+  where (deck',bankHand')   = draw deck bankHand
 
 -- Shuffles a hand
 shuffle :: StdGen -> Hand -> Hand
-shuffle g Empty = Empty
-shuffle g h = Add c' (shuffle g' h')
+shuffle g Empty   = Empty
+shuffle g h       = Add c' (shuffle g' h')
 	where 	
-		(c', h') = pickCardN h n
-		(n, g') = randomN g h 	
+		(c', h')  = pickCardN h n
+		(n, g')   = randomR (1, (size h)) g	
 
 
 --Given a StdGen and a Hand, generates a number between 1 and the deck size,
 --as well as a new StdGen
-randomN :: StdGen -> Hand -> (Integer, StdGen)
-randomN g h = randomR (1, (size h)) g
+--randomN :: StdGen -> Hand -> (Integer, StdGen)
+--randomN g h = randomR (1, (size h)) g
 
 
 -- Draws the card on position n and returns the card and the deck 
