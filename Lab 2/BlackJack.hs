@@ -119,13 +119,12 @@ shuffle g h       = Add c' (shuffle g' h')
 -- Draws the card on position n and returns the card and the deck 
 -- as a Hand w/o the card.
 pickCardN :: Hand -> Integer -> (Card, Hand)
-pickCardN Empty n = error "Hand is empty"
-pickCardN (Add c h) n 
-	| n < 1 	= error "Can't pick negative card"
-	| n > size (Add c h) = error "Number can't be larger than size of hand"
-	| n == 1 	= (c, h)
-	| n > 1 	= (c', (Add c h'))
-		where (c', h') = pickCardN h (n-1)
+pickCardN Empty _          = error "Hand is empty"
+pickCardN h n | n < 1      = error "Can't pick negative card"
+              | n > size h = error "Number can't be larger than size of hand" 
+pickCardN (Add c h) 1      = (c, h)
+pickCardN (Add c h) n      = (c', (Add c h'))
+    where (c', h') = pickCardN h (n-1)		
 
 prop_shuffle_sameCards :: StdGen -> Card -> Hand -> Bool
 prop_shuffle_sameCards g c h =
