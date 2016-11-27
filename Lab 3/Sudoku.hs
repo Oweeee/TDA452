@@ -97,6 +97,8 @@ instance Arbitrary Sudoku where
     do rows <- sequence [ sequence [ cell | j <- [1..9] ] | i <- [1..9] ]
        return (Sudoku rows)
 
+prop_Sudoku :: Sudoku -> Bool
+prop_Sudoku s = isSudoku s
 
 -- type representing 9 cells in form of a row, column or 3x3 block
 type Block = [Maybe Int]
