@@ -174,4 +174,33 @@ update :: Sudoku -> Pos -> Maybe Int -> Sudoku
 update (Sudoku (r:rs)) (0,y) value = (Sudoku (((!!=) r (y,value)):rs))
 update (Sudoku (r:rs)) (x,y) value = update (Sudoku rs) ((x-1),y) value
 
+{-
+relevantBlocks :: [Block]
+relevantBlocks = [a, b, c]
+    where 
+        a = (blocks example) !! 1
+        b = (blocks example) !! 10
+        c = (blocks example) !! 18
+-}
 -- returns a list of acceptable ints which can be inserted to a cell
+candidates :: Sudoku -> Pos -> [Int]
+candidates s p = candidates' s p 9
+    where
+        candidates' :: Sudoku -> Pos -> Int -> [Int]
+        candidates' s p 1 = []
+        candidates' s p i | testValue (update s p (Just i)) p = i: (candidates' s p (i-1))
+                          | otherwise    = candidates' s p (i-1)    
+
+testValue :: Sudoku -> Pos -> Bool
+testValue s p = all isOkayBlock (relevantBlocks (blocks s) p)
+    where 
+        relevantBlocks :: [Block] -> Pos -> [Block]
+        relevantBlocks b (x,y) = [(b !! x), (b !! (9+y)), (whatBox b (x,y))]
+            where
+
+                whatBox :: [Block] -> Pos -> Block
+                whatBox b (x,y)
+                    | y < 3 = b !! (17+(div x 3))
+                    | y > 5 = b !! (23+(div x 3))
+                    | otherwise = b !! (20+(div x 3)) 
+            
