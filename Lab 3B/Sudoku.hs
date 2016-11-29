@@ -164,7 +164,7 @@ blanks (Sudoku r) = allBlanksPos
           allBlanks (((Just n), pos):[]) = []
           allBlanks ((Nothing, pos):xs)  = [pos] ++ allBlanks xs
           allBlanks (((Just n), pos):xs) = allBlanks xs
-
+          
 (!!=) :: [a] -> (Int,a) -> [a]
 (!!=) (x:xs) (0, value) = value:xs
 (!!=) (x:xs) (i, value) = x:(!!=) xs (i-1, value)
