@@ -127,10 +127,10 @@ blocks (Sudoku r) = r
 
 -- helper function which creates 3x3 blocks.
 createBox :: [[Maybe Int]] -> [Block]
-createBox list =    [concat (take 3 list')] 
-                 ++ [concat (take 3 (drop 3 list'))] 
-                 ++ [concat (drop 6 list')]
-    where list' = transpose list 
+createBox list =    transpose [concat (take 3 list')] 
+                 ++ transpose [concat (take 3 (drop 3 list'))] 
+                 ++ transpose [concat (drop 6 list')]
+    where list' = transpose lengthist 
 
 -- Checks that blocks is of correct length and that its elements
 -- are of correct length.
