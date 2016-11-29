@@ -169,3 +169,10 @@ blanks (Sudoku r) = allBlanksPos
 (!!=) :: [a] -> (Int,a) -> [a]
 (!!=) (x:xs) (0, value) = value:xs
 (!!=) (x:xs) (i, value) = x:((!!=) xs ((i-1), value)) 
+
+-- updates a cell in a sudoku with a new given value
+update :: Sudoku -> Pos -> Maybe Int -> Sudoku
+update (Sudoku (r:rs)) (0,y) value = (Sudoku (((!!=) r (y,value)):rs))
+update (Sudoku (r:rs)) (x,y) value = update (Sudoku rs) ((x-1),y) value
+
+-- returns a list of acceptable ints which can be inserted to a cell
