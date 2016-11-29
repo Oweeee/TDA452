@@ -147,5 +147,21 @@ correctLength list = (length list == 9)
 isOkay :: Sudoku -> Bool
 isOkay s = (isSudoku s) && (all (isOkayBlock) (blocks s))
 
+-- tyoe which identifies the location of a cell.
+type Pos = (Int,Int)
 
+-- creates a list of all blank cell positions
+blanks :: Sudoku -> [Pos]
+blanks (Sudoku r) = allBlanksPos
+  where 
+      allCells = concat r
+      allPos = [(x,y) | x <- [0..8], y <- [0..8]]
+      cellPosList = zip allCells allPos
+      allBlanksPos = allBlanks cellPosList
+        where
+          allBlanks :: [(Maybe Int, Pos)] -> [Pos]
+          allBlanks ((Nothing, pos):[])  = [pos]
+          allBlanks (((Just n), pos):[]) = []
+          allBlanks ((Nothing, pos):xs)  = [pos] ++ allBlanks xs
+          allBlanks (((Just n), pos):xs) = allBlanks xs
 
