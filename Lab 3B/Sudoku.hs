@@ -4,6 +4,7 @@ import Test.QuickCheck
 import Data.Char
 import System.FilePath
 import Data.List
+import Data.Maybe
 
 -------------------------------------------------------------------------
 
@@ -130,7 +131,7 @@ createBox :: [[Maybe Int]] -> [Block]
 createBox list =    transpose [concat (take 3 list')] 
                  ++ transpose [concat (take 3 (drop 3 list'))] 
                  ++ transpose [concat (drop 6 list')]
-    where list' = transpose lengthist 
+    where list' = transpose list 
 
 -- Checks that blocks is of correct length and that its elements
 -- are of correct length.
@@ -172,14 +173,16 @@ blanks (Sudoku r) = allBlanksPos
 -- updates a cell in a sudoku with a new given value
 update :: Sudoku -> Pos -> Maybe Int -> Sudoku
 update (Sudoku (r:rs)) (0,y) value = (Sudoku (((!!=) r (y,value)):rs))
-update (Sudoku (r:rs)) (x,y) value = update (Sudoku rs) ((x-1),y) value
+update (Sudoku (r:rs)) (x,y) value = Sudoku (r:rs')
+    where
+        (Sudoku rs') = update (Sudoku rs) ((x-1),y) value
 
 -- returns a list of acceptable ints which can be inserted to a cell
 candidates :: Sudoku -> Pos -> [Int]
 candidates s p = candidates' s p 9
     where
         candidates' :: Sudoku -> Pos -> Int -> [Int]
-        candidates' s p 1 = []
+        candidates' s p 0 = []
         candidates' s p i | testValue (update s p (Just i)) p = i: (candidates' s p (i-1))
                           | otherwise    = candidates' s p (i-1)    
 
@@ -195,16 +198,15 @@ testValue s p = all isOkayBlock (relevantBlocks (blocks s) p)
                     | y < 3 = b !! (17+(div x 3))
                     | y > 5 = b !! (23+(div x 3))
                     | otherwise = b !! (20+(div x 3)) 
-					
+          
 solve :: Sudoku -> Maybe Sudoku
-solve s | not isOkay s = Nothing
-solve s = solve' s [blanks s]
-	where
-		solve' :: Sudoku -> [Pos] -> Maybe Sudoku
-		solve' sud [] = Just sud
-		solve' sud (p:ps) = listToMaybe (catMaybes sudList)
-			where
-				sudList = [solve' (update sud p c) ps | c <- cs]
-				cs = candidates sud p
-	
-            
+solve s | not (isOkay s) = Nothing
+solve s = solve' s (blanks s)
+  where
+    solve' :: Sudoku -> [Pos] -> Maybe Sudoku
+    solve' sud [] = Just sud
+    solve' sud (p:ps) = listToMaybe (catMaybes sudList)
+      where
+        sudList = [solve' (update sud p (Just c)) ps | c <- cs]
+        cs = candidates sud p
+  
