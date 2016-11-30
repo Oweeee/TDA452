@@ -183,7 +183,8 @@ candidates s p = candidates' s p 9
     where
         candidates' :: Sudoku -> Pos -> Int -> [Int]
         candidates' s p 0 = []
-        candidates' s p i | testValue (update s p (Just i)) p = i: (candidates' s p (i-1))
+        candidates' s p i | testValue (update s p (Just i)) p = 
+                            i:(candidates' s p (i-1))
                           | otherwise    = candidates' s p (i-1)    
 
 testValue :: Sudoku -> Pos -> Bool
@@ -223,6 +224,10 @@ isSolutionOf :: Sudoku -> Sudoku -> Bool
 isSolutionOf sol sud = ((isOkay sol) && (isOkay sud) && (isSolved sol) 
                         && (and (zipWith(\x y -> x == y || isNothing y) 
                         (concat (rows sol)) (concat (rows sud)))))
-                    
+
+prop_SolveSound :: Sudoku -> Property
+prop_SolveSound sud = isJust (solve sud) ==> 
+                      (isSolutionOf (fromJust (solve sud)) sud)
+            
                        
 
