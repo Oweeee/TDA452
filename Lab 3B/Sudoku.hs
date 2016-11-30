@@ -220,8 +220,9 @@ readAndSolve path =
                     else printSudoku (fromJust solvedSud)
                     
 isSolutionOf :: Sudoku -> Sudoku -> Bool
-isSolutionOf sol sud = isOkay sol && isOkay sud && isSolved sol &&
-                        and (zipWith(\x y -> x == y || isNothing y) 
-                        (concat sol) (concat sud))
+isSolutionOf sol sud = ((isOkay sol) && (isOkay sud) && (isSolved sol) 
+                        && (and (zipWith(\x y -> x == y || isNothing y) 
+                        (concat (rows sol)) (concat (rows sud)))))
+                    
                        
 
