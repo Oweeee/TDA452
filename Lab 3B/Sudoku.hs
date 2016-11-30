@@ -209,4 +209,13 @@ solve s = solve' s (blanks s)
       where
         sudList = [solve' (update sud p (Just c)) ps | c <- cs]
         cs = candidates sud p
-  
+
+readAndSolve :: FilePath -> IO ()
+readAndSolve path = 
+            do
+                sud <- readSudoku path
+                let solvedSud = solve sud
+                if isNothing solvedSud
+                    then putStrLn "no solution"
+                    else printSudoku (fromJust solvedSud)
+
