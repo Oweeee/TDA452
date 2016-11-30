@@ -218,4 +218,10 @@ readAndSolve path =
                 if isNothing solvedSud
                     then putStrLn "no solution"
                     else printSudoku (fromJust solvedSud)
+                    
+isSolutionOf :: Sudoku -> Sudoku -> Bool
+isSolutionOf sol sud = isOkay sol && isOkay sud && isSolved sol &&
+                        and (zipWith(\x y -> x == y || isNothing y) 
+                        (concat sol) (concat sud))
+                       
 
