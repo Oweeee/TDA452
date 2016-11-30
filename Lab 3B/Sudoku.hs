@@ -187,13 +187,16 @@ candidates s p = candidates' s p 9
                             i:(candidates' s p (i-1))
                           | otherwise    = candidates' s p (i-1)    
 
+                          
+-- checks if if a cell contains a legal value
 testValue :: Sudoku -> Pos -> Bool
 testValue s p = all isOkayBlock (relevantBlocks (blocks s) p)
     where 
+        -- returns the 3 blocks containing the cell
         relevantBlocks :: [Block] -> Pos -> [Block]
         relevantBlocks b (x,y) = [(b !! x), (b !! (9+y)), (whatBox b (x,y))]
             where
-
+                -- returns the box containing the cell
                 whatBox :: [Block] -> Pos -> Block
                 whatBox b (x,y)
                     | y < 3 = b !! (17+(div x 3))
@@ -224,6 +227,7 @@ isSolutionOf :: Sudoku -> Sudoku -> Bool
 isSolutionOf sol sud = ((isOkay sol) && (isOkay sud) && (isSolved sol) 
                         && (and (zipWith(\x y -> x == y || isNothing y) 
                         (concat (rows sol)) (concat (rows sud)))))
+
 
 prop_SolveSound :: Sudoku -> Property
 prop_SolveSound sud = isJust (solve sud) ==> 
