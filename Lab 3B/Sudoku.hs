@@ -166,6 +166,7 @@ blanks (Sudoku r) = allBlanksPos
           allBlanks ((Nothing, pos):xs)  = [pos] ++ allBlanks xs
           allBlanks (((Just n), pos):xs) = allBlanks xs
           
+-- replaces a value in a list at an index          
 (!!=) :: [a] -> (Int,a) -> [a]
 (!!=) (x:xs) (0, value) = value:xs
 (!!=) (x:xs) (i, value) = x:(!!=) xs ((i-1), value) 
@@ -186,7 +187,6 @@ candidates s p = candidates' s p 9
         candidates' s p i | testValue (update s p (Just i)) p = 
                             i:(candidates' s p (i-1))
                           | otherwise    = candidates' s p (i-1)    
-
                           
 -- checks if if a cell contains a legal value
 testValue :: Sudoku -> Pos -> Bool
@@ -202,7 +202,8 @@ testValue s p = all isOkayBlock (relevantBlocks (blocks s) p)
                     | y < 3 = b !! (17+(div x 3))
                     | y > 5 = b !! (23+(div x 3))
                     | otherwise = b !! (20+(div x 3)) 
-          
+ 
+-- solves a sudoku         
 solve :: Sudoku -> Maybe Sudoku
 solve s | not (isOkay s) = Nothing
 solve s = solve' s (blanks s)
@@ -214,6 +215,7 @@ solve s = solve' s (blanks s)
         sudList = [solve' (update sud p (Just c)) ps | c <- cs]
         cs = candidates sud p
 
+-- reads a sudoku from a file, solves it and prints it
 readAndSolve :: FilePath -> IO ()
 readAndSolve path = 
             do
@@ -222,13 +224,14 @@ readAndSolve path =
                 if isNothing solvedSud
                     then putStrLn "no solution"
                     else printSudoku (fromJust solvedSud)
-                    
+
+-- checks if a sudoku is a valid solution of another sudoku                    
 isSolutionOf :: Sudoku -> Sudoku -> Bool
 isSolutionOf sol sud = ((isOkay sol) && (isOkay sud) && (isSolved sol) 
                         && (and (zipWith(\x y -> x == y || isNothing y) 
                         (concat (rows sol)) (concat (rows sud)))))
 
-
+--property which checks if the solve method is sound
 prop_SolveSound :: Sudoku -> Property
 prop_SolveSound sud = isJust (solve sud) ==> 
                       (isSolutionOf (fromJust (solve sud)) sud)
