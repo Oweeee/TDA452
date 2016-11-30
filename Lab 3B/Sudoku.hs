@@ -174,14 +174,6 @@ update :: Sudoku -> Pos -> Maybe Int -> Sudoku
 update (Sudoku (r:rs)) (0,y) value = (Sudoku (((!!=) r (y,value)):rs))
 update (Sudoku (r:rs)) (x,y) value = update (Sudoku rs) ((x-1),y) value
 
-{-
-relevantBlocks :: [Block]
-relevantBlocks = [a, b, c]
-    where 
-        a = (blocks example) !! 1
-        b = (blocks example) !! 10
-        c = (blocks example) !! 18
--}
 -- returns a list of acceptable ints which can be inserted to a cell
 candidates :: Sudoku -> Pos -> [Int]
 candidates s p = candidates' s p 9
@@ -203,4 +195,16 @@ testValue s p = all isOkayBlock (relevantBlocks (blocks s) p)
                     | y < 3 = b !! (17+(div x 3))
                     | y > 5 = b !! (23+(div x 3))
                     | otherwise = b !! (20+(div x 3)) 
+					
+solve :: Sudoku -> Maybe Sudoku
+solve s | not isOkay s = Nothing
+solve s = solve' s [blanks s]
+	where
+		solve' :: Sudoku -> [Pos] -> Maybe Sudoku
+		solve' sud [] = Just sud
+		solve' sud (p:ps) = listToMaybe (catMaybes sudList)
+			where
+				sudList = [solve' (update sud p c) ps | c <- cs]
+				cs = candidates sud p
+	
             
