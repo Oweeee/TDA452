@@ -122,13 +122,25 @@ checkIfEqual n (x:xs)       | n == x    = True
 blocks :: Sudoku -> [Block]
 blocks (Sudoku r) = r 
                   ++ transpose r
-                  ++ createBox (take 3 r)
-                  ++ createBox (take 3 (drop 3 r))
-                  ++ createBox (drop 6 r)
+                  ++ getAllSquares (Sudoku r)
+
+getAllSquares :: Sudoku -> [Block]
+getAllSquares (Sudoku r) = 
+                     createSquare (take 3 r)
+                  ++ createSquare (take 3 (drop 3 r))
+                  ++ createSquare (drop 6 r)
+
+getSquare :: Sudoku -> Pos -> Block
+getSquare s (x,y) = (l !! (x div 3)) !! (y div 3)
+            where 
+                allSquares = getAllSquares s
+                l = take 3 allSquares
+                 ++ take 3 (drop 3 allSquares)
+                 ++ drop 6 allSquares
 
 -- helper function which creates 3x3 blocks.
-createBox :: [[Maybe Int]] -> [Block]
-createBox list =    transpose [concat (take 3 list')] 
+createSquare :: [[Maybe Int]] -> [Block]
+createSquare list =    transpose [concat (take 3 list')] 
                  ++ transpose [concat (take 3 (drop 3 list'))] 
                  ++ transpose [concat (drop 6 list')]
     where list' = transpose list 
@@ -190,18 +202,27 @@ candidates s p = candidates' s p 9
                           
 -- checks if if a cell contains a legal value
 testValue :: Sudoku -> Pos -> Bool
-testValue s p = all isOkayBlock (relevantBlocks (blocks s) p)
-    where 
-        -- returns the 3 blocks containing the cell
-        relevantBlocks :: [Block] -> Pos -> [Block]
-        relevantBlocks b (x,y) = [(b !! x), (b !! (9+y)), (whatBox b (x,y))]
-            where
-                -- returns the box containing the cell
-                whatBox :: [Block] -> Pos -> Block
-                whatBox b (x,y)
-                    | y < 3 = b !! (17+(div x 3))
-                    | y > 5 = b !! (23+(div x 3))
-                    | otherwise = b !! (20+(div x 3)) 
+testValue s p = all isOkayBlock (relevantBlocks s p)
+ 
+-- returns the 3 blocks containing the cell
+relevantBlocks :: Sudoku -> Pos -> [Block]
+relevantBlocks s p = [(getRow s p), (getColumn s p), (getSquare s p)]
+    where
+        -- returns the Square containing the cell
+        whatSquare :: [Block] -> Pos -> Block
+        whatSquare b (x,y)
+            | y < 3 = b !! (17+(div x 3))
+            | y > 5 = b !! (23+(div x 3))
+            | otherwise = b !! (20+(div x 3)) 
+
+getRow :: Sudoku -> Pos -> Block
+getRow (Sudoku r) (x,y) = r !! x
+
+getColumn :: Sudoku -> Pos -> Block
+getColumn (Sudoku r) (x,y) = (transpose r) !! y
+
+getSquare :: Sudoku -> Pos -> Block
+getSquare 
  
 -- solves a sudoku         
 solve :: Sudoku -> Maybe Sudoku
