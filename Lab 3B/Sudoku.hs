@@ -130,14 +130,6 @@ getAllSquares (Sudoku r) =
                   ++ createSquare (take 3 (drop 3 r))
                   ++ createSquare (drop 6 r)
 
-getSquare :: Sudoku -> Pos -> Block
-getSquare s (x,y) = (l !! (x div 3)) !! (y div 3)
-            where 
-                allSquares = getAllSquares s
-                l = take 3 allSquares
-                 ++ take 3 (drop 3 allSquares)
-                 ++ drop 6 allSquares
-
 -- helper function which creates 3x3 blocks.
 createSquare :: [[Maybe Int]] -> [Block]
 createSquare list =    transpose [concat (take 3 list')] 
@@ -222,7 +214,12 @@ getColumn :: Sudoku -> Pos -> Block
 getColumn (Sudoku r) (x,y) = (transpose r) !! y
 
 getSquare :: Sudoku -> Pos -> Block
-getSquare 
+getSquare s (x,y) = (l !! (div x 3)) !! (div y 3)
+            where 
+                allSquares = getAllSquares s
+                l = [take 3 allSquares]
+                 ++ [take 3 (drop 3 allSquares)]
+                 ++ [drop 6 allSquares]
  
 -- solves a sudoku         
 solve :: Sudoku -> Maybe Sudoku
