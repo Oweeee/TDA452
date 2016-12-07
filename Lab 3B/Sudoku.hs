@@ -124,6 +124,7 @@ blocks (Sudoku r) = r
                   ++ transpose r
                   ++ getAllSquares (Sudoku r)
 
+-- returns a list of all square blocks in a sudoku
 getAllSquares :: Sudoku -> [Block]
 getAllSquares (Sudoku r) = 
                      createSquare (take 3 r)
@@ -172,11 +173,9 @@ blanks (Sudoku r) = allBlanksPos
 
 -- updates a cell in a sudoku with a new given value
 update :: Sudoku -> Pos -> Maybe Int -> Sudoku
-update (Sudoku (r:rs)) (0,y) value = (Sudoku (((!!=) r (y,value)):rs))
-update (Sudoku (r:rs)) (x,y) value = Sudoku (r:rs')
-    where
-        (Sudoku rs') = update (Sudoku rs) ((x-1),y) value
+update (Sudoku r) (x,y) i = Sudoku ((!!=) r (x, ((!!=) (r !! x) (y,i))))
 
+-- returns a list of a positions possible values.
 candidates :: Sudoku -> Pos -> [Int]
 candidates s p = filter (\i -> (testValue (update s p (Just i)) p)) [1..9]    
                           
@@ -188,12 +187,15 @@ testValue s p = all isOkayBlock (relevantBlocks s p)
 relevantBlocks :: Sudoku -> Pos -> [Block]
 relevantBlocks s p = [(getRow s p), (getColumn s p), (getSquare s p)]
 
+-- returns the row containing the position
 getRow :: Sudoku -> Pos -> Block
 getRow (Sudoku r) (x,y) = r !! x
 
+-- returns the column containing the position
 getColumn :: Sudoku -> Pos -> Block
 getColumn (Sudoku r) (x,y) = (transpose r) !! y
 
+--returns the square containing the position
 getSquare :: Sudoku -> Pos -> Block
 getSquare s (x,y) = (l !! (div x 3)) !! (div y 3)
             where 
