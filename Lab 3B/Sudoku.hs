@@ -199,13 +199,6 @@ testValue s p = all isOkayBlock (relevantBlocks s p)
 -- returns the 3 blocks containing the cell
 relevantBlocks :: Sudoku -> Pos -> [Block]
 relevantBlocks s p = [(getRow s p), (getColumn s p), (getSquare s p)]
-    where
-        -- returns the Square containing the cell
-        whatSquare :: [Block] -> Pos -> Block
-        whatSquare b (x,y)
-            | y < 3 = b !! (17+(div x 3))
-            | y > 5 = b !! (23+(div x 3))
-            | otherwise = b !! (20+(div x 3)) 
 
 getRow :: Sudoku -> Pos -> Block
 getRow (Sudoku r) (x,y) = r !! x
