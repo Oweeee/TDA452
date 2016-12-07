@@ -177,15 +177,8 @@ update (Sudoku (r:rs)) (x,y) value = Sudoku (r:rs')
     where
         (Sudoku rs') = update (Sudoku rs) ((x-1),y) value
 
--- returns a list of acceptable ints which can be inserted to a cell
 candidates :: Sudoku -> Pos -> [Int]
-candidates s p = candidates' s p 9
-    where
-        candidates' :: Sudoku -> Pos -> Int -> [Int]
-        candidates' s p 0 = []
-        candidates' s p i | testValue (update s p (Just i)) p = 
-                            i:(candidates' s p (i-1))
-                          | otherwise    = candidates' s p (i-1)    
+candidates s p = filter (\i -> (testValue (update s p (Just i)) p)) [1..9]    
                           
 -- checks if if a cell contains a legal value
 testValue :: Sudoku -> Pos -> Bool
