@@ -132,9 +132,9 @@ getAllSquares (Sudoku r) =
 
 -- helper function which creates 3x3 blocks.
 createSquare :: [[Maybe Int]] -> [Block]
-createSquare list =    transpose [concat (take 3 list')] 
-                 ++ transpose [concat (take 3 (drop 3 list'))] 
-                 ++ transpose [concat (drop 6 list')]
+createSquare list = [concat (transpose(take 3 list'))] 
+                 ++ [concat (transpose(take 3 (drop 3 list')))] 
+                 ++ [concat (transpose(drop 6 list'))]
     where list' = transpose list 
 
 -- Checks that blocks is of correct length and that its elements
@@ -162,14 +162,9 @@ blanks (Sudoku r) = allBlanksPos
       allCells = concat r
       allPos = [(x,y) | x <- [0..8], y <- [0..8]]
       cellPosList = zip allCells allPos
-      allBlanksPos = allBlanks cellPosList
-        where
-          allBlanks :: [(Maybe Int, Pos)] -> [Pos]
-          allBlanks ((Nothing, pos):[])  = [pos]
-          allBlanks (((Just n), pos):[]) = []
-          allBlanks ((Nothing, pos):xs)  = [pos] ++ allBlanks xs
-          allBlanks (((Just n), pos):xs) = allBlanks xs
-          
+      allBlanksTupleList = filter (\(a,_) -> isNothing a) cellPosList
+      allBlanksPos = map snd allBlanksTupleList
+
 -- replaces a value in a list at an index          
 (!!=) :: [a] -> (Int,a) -> [a]
 (!!=) (x:xs) (0, value) = value:xs
