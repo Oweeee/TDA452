@@ -79,18 +79,29 @@ instance Arbitrary Expr where
 
 simplify :: Expr -> Expr
 simplify e = case e of 
-        (Add (Num 0) e) -> simplify e
-        (Add e (Num 0)) -> simplify e
-        (Mul (Num 0) _) -> Num 0
-        (Mul _ (Num 0)) -> Num 0
-        (Mul (Num 1) e) -> simplify e
-        (Mul e (Num 1)) -> simplify e
-        (Add e1 e2)     -> (Add (simplify e1) (simplify e2))
-        (Mul e1 e2)     -> (Mul (simplify e1) (simplify e2))
-        (Sin e)         -> (Sin (simplify e))
-        (Cos e)         -> (Cos (simplify e))    
-        otherwise       -> e
+        (Add (Num 0) e)         -> simplify e
+        (Add e (Num 0))         -> simplify e
+        (Mul (Num 0) _)         -> Num 0
+        (Mul _ (Num 0))         -> Num 0
+        (Mul (Num 1) e)         -> simplify e
+        (Mul e (Num 1))         -> simplify e
+        (Add (Num n) (Num m))   -> Num (n+m)
+        (Add e1 e2)             -> (Add (simplify e1)  (simplify e2))
+        (Mul e1 e2)             -> (Mul (simplify e1) (simplify e2))
+        (Sin e)                 -> (Sin (simplify e))
+        (Cos e)                 -> (Cos (simplify e))    
+        otherwise               -> e
 
---differentiate :: Expr -> Expr
+differentiate :: Expr -> Expr
+differentiate e = differentiate' (simplify e)
+
+differentiate' :: Expr -> Expr
+differentiate' e = case e of
+        (Num n)     -> Num 0
+        (Var x)     -> Num 1
+        (Add f g)   -> (Add (differentiate f) (differentiate g)) 
+        (Mul f g)   -> (Add (Mul (differentiate f) g) (Mul f (differentiate g)))
+        (Sin x)     -> Cos x
+        (Cos x)     -> (Mul (Num (-1)) (Sin x))
 
 
