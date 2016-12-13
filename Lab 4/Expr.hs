@@ -55,7 +55,9 @@ factor = char '(' *> expr <* char ')' <|> num <|>
          sinFunc <|> cosFunc <|> var
 
 prop_ShowReadExpr :: Expr -> Bool
-prop_ShowReadExpr e = fromJust (readExpr (showExpr e)) == e
+prop_ShowReadExpr e = let s = showExpr e
+                          Just e' = readExpr s
+                      in showExpr e' == s
 
 arbExpr :: Int -> Gen Expr
 arbExpr s = frequency [(1, rNum), (1, rVar), (s, rOp s), (s, rFunc s)]
@@ -85,23 +87,20 @@ simplify e = case e of
         (Mul _ (Num 0))         -> Num 0
         (Mul (Num 1) e)         -> simplify e
         (Mul e (Num 1))         -> simplify e
-        (Add (Num n) (Num m))   -> Num (n+m)
-        (Add e1 e2)             -> (Add (simplify e1)  (simplify e2))
+        (Add e1 e2)             -> (Add (simplify e1) (simplify e2))
         (Mul e1 e2)             -> (Mul (simplify e1) (simplify e2))
         (Sin e)                 -> (Sin (simplify e))
         (Cos e)                 -> (Cos (simplify e))    
         otherwise               -> e
 
 differentiate :: Expr -> Expr
-differentiate e = differentiate' (simplify e)
-
-differentiate' :: Expr -> Expr
-differentiate' e = case e of
-        (Num n)     -> Num 0
-        (Var x)     -> Num 1
-        (Add f g)   -> (Add (differentiate f) (differentiate g)) 
-        (Mul f g)   -> (Add (Mul (differentiate f) g) (Mul f (differentiate g)))
-        (Sin x)     -> Cos x
-        (Cos x)     -> (Mul (Num (-1)) (Sin x))
+differentiate e = case e of
+    (Num n)           -> Num 0
+    (Var x)           -> Num 1
+    (Add e1 e2)       -> (Add (differentiate e1) (differentiate e2))
+    (Mul e1 e2)       -> (Add (Mul e1 (differentiate e2)) 
+                              (Mul (differentiate e1) e2))
+    (Sin e)           -> (Cos e)
+    (Cos e)           -> (Mul (Num (-1)) (Sin e))
 
 
