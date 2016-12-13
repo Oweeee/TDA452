@@ -1,6 +1,7 @@
 import Parsing
 import Data.Maybe
 import Data.Char
+import Test.QuickCheck
 
 data Expr = Num Double
           | Var Char
@@ -8,7 +9,7 @@ data Expr = Num Double
           | Mul Expr Expr
           | Sin Expr
           | Cos Expr
-          deriving (Show)
+          deriving (Show, Eq)
 
 showExpr :: Expr -> String
 showExpr (Num n)     = show n
@@ -37,12 +38,8 @@ readExpr s = let s' = filter (not.isSpace) s
                 Just (e,"") -> Just e
                 _           -> Nothing
 
-double :: Parser Double
-double = (oneOrMore digit >>= return . read) <|> 
-         fmap negate (char '-' *> double)
-
 num :: Parser Expr
-num = Num <$> double
+num = Num <$> readsP
 
 expr = foldr1 Add <$> chain term (char '+')
 
@@ -57,6 +54,43 @@ var = Var <$> (char 'x')
 factor = char '(' *> expr <* char ')' <|> num <|> 
          sinFunc <|> cosFunc <|> var
 
+prop_ShowReadExpr :: Expr -> Bool
+prop_ShowReadExpr e = fromJust (readExpr (showExpr e)) == e
 
+arbExpr :: Int -> Gen Expr
+arbExpr s = frequency [(1, rNum), (1, rVar), (s, rOp s), (s, rFunc s)]
+    where
+        rNum = elements $ map Num [0..100]
+        rVar = elements $ map Var ['x'] 
+        rOp s = do
+            let s' = (div s 2)
+            op <- elements [Mul, Add]
+            e1 <- arbExpr s'
+            e2 <- arbExpr s'
+            return $ op e1 e2
+        rFunc s = do
+            let s' = (div s 2)
+            func <- elements [Sin, Cos]
+            e <- arbExpr s'
+            return $ func e
+
+instance Arbitrary Expr where
+    arbitrary = sized arbExpr
+
+simplify :: Expr -> Expr
+simplify e = case e of 
+        (Add (Num 0) e) -> simplify e
+        (Add e (Num 0)) -> simplify e
+        (Mul (Num 0) _) -> Num 0
+        (Mul _ (Num 0)) -> Num 0
+        (Mul (Num 1) e) -> simplify e
+        (Mul e (Num 1)) -> simplify e
+        (Add e1 e2)     -> (Add (simplify e1) (simplify e2))
+        (Mul e1 e2)     -> (Mul (simplify e1) (simplify e2))
+        (Sin e)         -> (Sin (simplify e))
+        (Cos e)         -> (Cos (simplify e))    
+        otherwise       -> e
+
+--differentiate :: Expr -> Expr
 
 
