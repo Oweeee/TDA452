@@ -1,0 +1,3420 @@
+{-# LINE 1 "C:\Users\H_ron\AppData\Local\Temp\ghc3232_0\ghc_9.s" #-}
+.data
+	.align 4
+.align 1
+.globl __stginit_Pages
+__stginit_Pages:
+.data
+	.align 4
+.align 1
+.globl Pages_zdsffi2_closure
+Pages_zdsffi2_closure:
+	.long	Pages_zdsffi2_info
+.text
+	.align 4,0x90
+	.long	196623
+	.long	0
+	.long	15
+.globl Pages_zdsffi2_info
+Pages_zdsffi2_info:
+.Lc8xS:
+	movl 16(%ebx),%eax
+	movl %eax,24(%ebx)
+	movl 8(%ebx),%eax
+	movl %eax,16(%ebx)
+	movl $IBJHmTQyrtkCXFsQwT7UYx_HasteziPrimziAny_zdfFromAnyZLZR_closure,8(%ebx)
+	jmp IBJHmTQyrtkCXFsQwT7UYx_HasteziPrimziForeign_ffiio_info
+.data
+	.align 4
+.align 1
+.globl Pages_selectzuf1_closure
+Pages_selectzuf1_closure:
+	.long	Pages_selectzuf1_info
+	.long	0
+	.long	0
+	.long	0
+.section .rodata
+	.align 4
+.align 1
+c8ya_str:
+	.byte	40
+	.byte	102
+	.byte	117
+	.byte	110
+	.byte	99
+	.byte	116
+	.byte	105
+	.byte	111
+	.byte	110
+	.byte	40
+	.byte	101
+	.byte	41
+	.byte	32
+	.byte	123
+	.byte	101
+	.byte	46
+	.byte	115
+	.byte	101
+	.byte	108
+	.byte	101
+	.byte	99
+	.byte	116
+	.byte	40
+	.byte	41
+	.byte	59
+	.byte	125
+	.byte	41
+	.byte	0
+.text
+	.align 4,0x90
+	.long	0
+	.long	22
+.globl Pages_selectzuf1_info
+Pages_selectzuf1_info:
+.Lc8yc:
+	leal -16(%ebp),%eax
+	cmpl 840(%ebx),%eax
+	jb .Lc8yj
+.Lc8yk:
+	subl $4,%esp
+	pushl %esi
+	pushl %ebx
+	call newCAF
+	addl $12,%esp
+	testl %eax,%eax
+	je .Lc8y9
+.Lc8y8:
+	movl $stg_bh_upd_frame_info,-12(%ebp)
+	movl %eax,-8(%ebp)
+	movl c8ya_str+3,%eax
+	movl $c8yg_info,-16(%ebp)
+	addl $-16,%ebp
+	movl 872(%ebx),%ecx
+	movl 20(%ecx),%edx
+	movl %ebp,12(%edx)
+	movl 888(%ebx),%edx
+	movl %eax,64(%esp)
+	leal 4(%edi),%eax
+	movl %eax,8(%edx)
+	movl 100(%ecx),%eax
+	movl %eax,76(%esp)
+	movl 104(%ecx),%eax
+	movl %eax,88(%esp)
+	leal 4(%edi),%eax
+	subl (%edx),%eax
+	xorl %edx,%edx
+	movl %edx,100(%esp)
+	movl 76(%esp),%edx
+	subl %eax,%edx
+	movl 88(%esp),%eax
+	movl %edx,112(%esp)
+	movl 100(%esp),%edx
+	sbbl %edx,%eax
+	movl 112(%esp),%edx
+	movl %edx,100(%ecx)
+	movl %eax,104(%ecx)
+	subl $4,%esp
+	pushl $0
+	pushl %ebx
+	call suspendThread
+	addl $12,%esp
+	subl $8,%esp
+	movl 72(%esp),%ecx
+	pushl %ecx
+	movl %eax,136(%esp)
+	call eval
+	addl $12,%esp
+	subl $8,%esp
+	movl 132(%esp),%ecx
+	pushl %ecx
+	movl %eax,148(%esp)
+	call resumeThread
+	addl $12,%esp
+	movl %eax,%ebx
+	movl 872(%ebx),%eax
+	movl 20(%eax),%ecx
+	movl 12(%ecx),%ebp
+	addl $104,%ecx
+	movl %ecx,840(%ebx)
+	movl $0,904(%ebx)
+	movl 888(%ebx),%ecx
+	movl 8(%ecx),%edx
+	leal -4(%edx),%edi
+	movl %eax,148(%esp)
+	movl (%ecx),%eax
+	movl 48(%ecx),%ecx
+	shll $12,%ecx
+	decl %ecx
+	movl %ecx,160(%esp)
+	movl %eax,%ecx
+	movl %edx,172(%esp)
+	movl 160(%esp),%edx
+	addl %edx,%ecx
+	movl %ecx,856(%ebx)
+	movl 148(%esp),%ecx
+	movl 100(%ecx),%edx
+	movl 104(%ecx),%ecx
+	movl %ecx,184(%esp)
+	movl 172(%esp),%ecx
+	subl %eax,%ecx
+	xorl %eax,%eax
+	addl %ecx,%edx
+	movl 184(%esp),%ecx
+	adcl %eax,%ecx
+	movl 148(%esp),%eax
+	movl %edx,100(%eax)
+	movl %ecx,104(%eax)
+	movl 136(%esp),%eax
+	movl %eax,%esi
+	jmp *(%ebp)
+.Lc8y9:
+	jmp *(%esi)
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8yg_info:
+.Lc8yg:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8yn
+.Lc8ym:
+	movl $base_GHCziPtr_Ptr_con_info,-4(%edi)
+	movl %esi,(%edi)
+	leal -3(%edi),%esi
+	addl $4,%ebp
+	jmp *(%ebp)
+.Lc8yj:
+	jmp *-16(%ebx)
+.Lc8yn:
+	movl $8,904(%ebx)
+	jmp stg_gc_unbx_r1
+.data
+	.align 4
+.align 1
+.globl Pages_select_closure
+Pages_select_closure:
+	.long	Pages_select_info
+	.long	0
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(Pages_select_info)+0
+	.long	65541
+	.long	0
+	.long	65551
+.globl Pages_select_info
+Pages_select_info:
+.Lc8yV:
+	movl 8(%ebx),%eax
+	movl %eax,40(%ebx)
+	movl $ghczmprim_GHCziTypes_ZMZN_closure+1,32(%ebx)
+	movl $Pages_selectzuf1_closure,24(%ebx)
+	movl $Pages_zdsffi2_closure+3,16(%ebx)
+	movl $FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziCore_zdfToAnyElem_closure,8(%ebx)
+	jmp IBJHmTQyrtkCXFsQwT7UYx_HasteziPrimziForeign_zdfFFIZLzmzgZRzuzdczuzuffi_info
+.data
+	.align 4
+.align 1
+.globl Pages_mkDiv1_closure
+Pages_mkDiv1_closure:
+	.long	Pages_mkDiv1_info
+	.long	0
+.section .rodata
+	.align 4
+.align 1
+c8zk_str:
+	.byte	100
+	.byte	105
+	.byte	118
+	.byte	0
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(Pages_mkDiv1_info)+4
+	.long	65539
+	.long	0
+	.long	196623
+.globl Pages_mkDiv1_info
+Pages_mkDiv1_info:
+.Lc8zn:
+	leal -8(%ebp),%eax
+	cmpl 840(%ebx),%eax
+	jb .Lc8zL
+.Lc8zM:
+	movl $c8zl_info,-4(%ebp)
+	movl $c8zk_str,8(%ebx)
+	addl $-4,%ebp
+	jmp ghczmprim_GHCziCString_unpackCStringzh_info
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(c8zl_info)+4
+	.long	0
+	.long	65568
+c8zl_info:
+.Lc8zl:
+	movl $c8zq_info,(%ebp)
+	jmp toJSStr
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(c8zq_info)+4
+	.long	0
+	.long	65568
+c8zq_info:
+.Lc8zq:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8zQ
+.Lc8zP:
+	movl $ghczmprim_GHCziTypes_Izh_con_info,-4(%edi)
+	movl %esi,(%edi)
+	movl $c8zA_info,-4(%ebp)
+	movl $FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziJSString_newElemzuf1_closure,%esi
+	movl (%edi),%eax
+	movl %eax,(%ebp)
+	addl $-4,%ebp
+	testw $7,%si
+	jne .Lc8zA
+.Lc8zB:
+	jmp *(%esi)
+.text
+	.align 4,0x90
+	.long	65
+	.long	32
+c8zA_info:
+.Lc8zA:
+	movl 4(%ebp),%eax
+	movl $c8zI_info,4(%ebp)
+	addl $4,%ebp
+	movl 3(%esi),%ecx
+	movl 872(%ebx),%edx
+	movl %ecx,64(%esp)
+	movl 20(%edx),%ecx
+	movl %ebp,12(%ecx)
+	movl 888(%ebx),%ecx
+	movl %eax,76(%esp)
+	leal 4(%edi),%eax
+	movl %eax,8(%ecx)
+	movl 100(%edx),%eax
+	movl %eax,88(%esp)
+	movl 104(%edx),%eax
+	movl %eax,100(%esp)
+	leal 4(%edi),%eax
+	subl (%ecx),%eax
+	xorl %ecx,%ecx
+	movl %ecx,112(%esp)
+	movl 88(%esp),%ecx
+	subl %eax,%ecx
+	movl 100(%esp),%eax
+	movl %ecx,124(%esp)
+	movl 112(%esp),%ecx
+	sbbl %ecx,%eax
+	movl 124(%esp),%ecx
+	movl %ecx,100(%edx)
+	movl %eax,104(%edx)
+	subl $4,%esp
+	pushl $0
+	pushl %ebx
+	call suspendThread
+	addl $12,%esp
+	subl $4,%esp
+	movl 80(%esp),%ecx
+	pushl %ecx
+	movl 72(%esp),%ecx
+	pushl %ecx
+	movl %eax,148(%esp)
+	call __app1
+	addl $12,%esp
+	subl $8,%esp
+	movl 144(%esp),%ecx
+	pushl %ecx
+	movl %eax,160(%esp)
+	call resumeThread
+	addl $12,%esp
+	movl %eax,%ebx
+	movl 872(%ebx),%eax
+	movl 20(%eax),%ecx
+	movl 12(%ecx),%ebp
+	addl $104,%ecx
+	movl %ecx,840(%ebx)
+	movl $0,904(%ebx)
+	movl 888(%ebx),%ecx
+	movl 8(%ecx),%edx
+	leal -4(%edx),%edi
+	movl %eax,160(%esp)
+	movl (%ecx),%eax
+	movl 48(%ecx),%ecx
+	shll $12,%ecx
+	decl %ecx
+	movl %ecx,172(%esp)
+	movl %eax,%ecx
+	movl %edx,184(%esp)
+	movl 172(%esp),%edx
+	addl %edx,%ecx
+	movl %ecx,856(%ebx)
+	movl 160(%esp),%ecx
+	movl 100(%ecx),%edx
+	movl 104(%ecx),%ecx
+	movl %ecx,196(%esp)
+	movl 184(%esp),%ecx
+	subl %eax,%ecx
+	xorl %eax,%eax
+	addl %ecx,%edx
+	movl 196(%esp),%ecx
+	adcl %eax,%ecx
+	movl 160(%esp),%eax
+	movl %edx,100(%eax)
+	movl %ecx,104(%eax)
+	movl 148(%esp),%eax
+	movl %eax,%esi
+	jmp *(%ebp)
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8zI_info:
+.Lc8zI:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8zV
+.Lc8zU:
+	movl $base_GHCziPtr_Ptr_con_info,-4(%edi)
+	movl %esi,(%edi)
+	leal -3(%edi),%esi
+	addl $4,%ebp
+	jmp *(%ebp)
+.Lc8zL:
+	movl $Pages_mkDiv1_closure,%esi
+	jmp *-8(%ebx)
+.Lc8zQ:
+	movl $8,904(%ebx)
+	jmp stg_gc_unbx_r1
+.Lc8zV:
+	movl $8,904(%ebx)
+	jmp stg_gc_unbx_r1
+.data
+	.align 4
+.align 1
+.globl Pages_mkDiv_closure
+Pages_mkDiv_closure:
+	.long	Pages_mkDiv_info
+	.long	0
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(Pages_mkDiv_info)+8
+	.long	65539
+	.long	0
+	.long	65551
+.globl Pages_mkDiv_info
+Pages_mkDiv_info:
+.Lc8Au:
+	jmp Pages_mkDiv1_info
+.data
+	.align 4
+.align 1
+.globl Pages_mkHTML2_closure
+Pages_mkHTML2_closure:
+	.long	Pages_mkHTML2_info
+	.long	0
+.section .rodata
+	.align 4
+.align 1
+c8AR_str:
+	.byte	115
+	.byte	112
+	.byte	97
+	.byte	110
+	.byte	0
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(Pages_mkHTML2_info)+4
+	.long	65539
+	.long	0
+	.long	327695
+.globl Pages_mkHTML2_info
+Pages_mkHTML2_info:
+.Lc8AU:
+	leal -8(%ebp),%eax
+	cmpl 840(%ebx),%eax
+	jb .Lc8Bi
+.Lc8Bj:
+	movl $c8AS_info,-4(%ebp)
+	movl $c8AR_str,8(%ebx)
+	addl $-4,%ebp
+	jmp ghczmprim_GHCziCString_unpackCStringzh_info
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(c8AS_info)+4
+	.long	0
+	.long	65568
+c8AS_info:
+.Lc8AS:
+	movl $c8AX_info,(%ebp)
+	jmp toJSStr
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(c8AX_info)+4
+	.long	0
+	.long	65568
+c8AX_info:
+.Lc8AX:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8Bn
+.Lc8Bm:
+	movl $ghczmprim_GHCziTypes_Izh_con_info,-4(%edi)
+	movl %esi,(%edi)
+	movl $c8B7_info,-4(%ebp)
+	movl $FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziJSString_newElemzuf1_closure,%esi
+	movl (%edi),%eax
+	movl %eax,(%ebp)
+	addl $-4,%ebp
+	testw $7,%si
+	jne .Lc8B7
+.Lc8B8:
+	jmp *(%esi)
+.text
+	.align 4,0x90
+	.long	65
+	.long	32
+c8B7_info:
+.Lc8B7:
+	movl 4(%ebp),%eax
+	movl $c8Bf_info,4(%ebp)
+	addl $4,%ebp
+	movl 3(%esi),%ecx
+	movl 872(%ebx),%edx
+	movl %ecx,64(%esp)
+	movl 20(%edx),%ecx
+	movl %ebp,12(%ecx)
+	movl 888(%ebx),%ecx
+	movl %eax,76(%esp)
+	leal 4(%edi),%eax
+	movl %eax,8(%ecx)
+	movl 100(%edx),%eax
+	movl %eax,88(%esp)
+	movl 104(%edx),%eax
+	movl %eax,100(%esp)
+	leal 4(%edi),%eax
+	subl (%ecx),%eax
+	xorl %ecx,%ecx
+	movl %ecx,112(%esp)
+	movl 88(%esp),%ecx
+	subl %eax,%ecx
+	movl 100(%esp),%eax
+	movl %ecx,124(%esp)
+	movl 112(%esp),%ecx
+	sbbl %ecx,%eax
+	movl 124(%esp),%ecx
+	movl %ecx,100(%edx)
+	movl %eax,104(%edx)
+	subl $4,%esp
+	pushl $0
+	pushl %ebx
+	call suspendThread
+	addl $12,%esp
+	subl $4,%esp
+	movl 80(%esp),%ecx
+	pushl %ecx
+	movl 72(%esp),%ecx
+	pushl %ecx
+	movl %eax,148(%esp)
+	call __app1
+	addl $12,%esp
+	subl $8,%esp
+	movl 144(%esp),%ecx
+	pushl %ecx
+	movl %eax,160(%esp)
+	call resumeThread
+	addl $12,%esp
+	movl %eax,%ebx
+	movl 872(%ebx),%eax
+	movl 20(%eax),%ecx
+	movl 12(%ecx),%ebp
+	addl $104,%ecx
+	movl %ecx,840(%ebx)
+	movl $0,904(%ebx)
+	movl 888(%ebx),%ecx
+	movl 8(%ecx),%edx
+	leal -4(%edx),%edi
+	movl %eax,160(%esp)
+	movl (%ecx),%eax
+	movl 48(%ecx),%ecx
+	shll $12,%ecx
+	decl %ecx
+	movl %ecx,172(%esp)
+	movl %eax,%ecx
+	movl %edx,184(%esp)
+	movl 172(%esp),%edx
+	addl %edx,%ecx
+	movl %ecx,856(%ebx)
+	movl 160(%esp),%ecx
+	movl 100(%ecx),%edx
+	movl 104(%ecx),%ecx
+	movl %ecx,196(%esp)
+	movl 184(%esp),%ecx
+	subl %eax,%ecx
+	xorl %eax,%eax
+	addl %ecx,%edx
+	movl 196(%esp),%ecx
+	adcl %eax,%ecx
+	movl 160(%esp),%eax
+	movl %edx,100(%eax)
+	movl %ecx,104(%eax)
+	movl 148(%esp),%eax
+	movl %eax,%esi
+	jmp *(%ebp)
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8Bf_info:
+.Lc8Bf:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8Bs
+.Lc8Br:
+	movl $base_GHCziPtr_Ptr_con_info,-4(%edi)
+	movl %esi,(%edi)
+	leal -3(%edi),%esi
+	addl $4,%ebp
+	jmp *(%ebp)
+.Lc8Bi:
+	movl $Pages_mkHTML2_closure,%esi
+	jmp *-8(%ebx)
+.Lc8Bn:
+	movl $8,904(%ebx)
+	jmp stg_gc_unbx_r1
+.Lc8Bs:
+	movl $8,904(%ebx)
+	jmp stg_gc_unbx_r1
+.data
+	.align 4
+.align 1
+.globl Pages_mkHTML1_closure
+Pages_mkHTML1_closure:
+	.long	Pages_mkHTML1_info
+	.long	0
+	.long	0
+	.long	0
+.section .rodata
+	.align 4
+.align 1
+c8Cc_str:
+	.byte	105
+	.byte	110
+	.byte	110
+	.byte	101
+	.byte	114
+	.byte	72
+	.byte	84
+	.byte	77
+	.byte	76
+	.byte	0
+.text
+	.align 4,0x90
+	.long	0
+	.long	22
+.globl Pages_mkHTML1_info
+Pages_mkHTML1_info:
+.Lc8Cf:
+	leal -16(%ebp),%eax
+	cmpl 840(%ebx),%eax
+	jb .Lc8Ct
+.Lc8Cu:
+	subl $4,%esp
+	pushl %esi
+	pushl %ebx
+	call newCAF
+	addl $12,%esp
+	testl %eax,%eax
+	je .Lc8Cb
+.Lc8Ca:
+	movl $stg_bh_upd_frame_info,-12(%ebp)
+	movl %eax,-8(%ebp)
+	movl $c8Cd_info,-16(%ebp)
+	movl $c8Cc_str,8(%ebx)
+	addl $-16,%ebp
+	jmp ghczmprim_GHCziCString_unpackCStringzh_info
+.Lc8Cb:
+	jmp *(%esi)
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8Cd_info:
+.Lc8Cd:
+	movl $c8Ci_info,(%ebp)
+	jmp toJSStr
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8Ci_info:
+.Lc8Ci:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8Cy
+.Lc8Cx:
+	movl $ghczmprim_GHCziTypes_Izh_con_info,-4(%edi)
+	movl %esi,(%edi)
+	leal -3(%edi),%eax
+.Lc8Cq:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8CB
+.Lc8CA:
+	movl 3(%eax),%eax
+	movl $FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziCore_PropName_con_info,-4(%edi)
+	movl %eax,(%edi)
+	leal -3(%edi),%esi
+	addl $4,%ebp
+	jmp *(%ebp)
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8Cp_info:
+.Lc8Cp:
+	movl %esi,%eax
+	jmp .Lc8Cq
+.Lc8Ct:
+	jmp *-16(%ebx)
+.Lc8Cy:
+	movl $8,904(%ebx)
+	jmp stg_gc_unbx_r1
+.Lc8CB:
+	movl $8,904(%ebx)
+	movl $c8Cp_info,(%ebp)
+	movl %eax,%esi
+	jmp stg_gc_unpt_r1
+.data
+	.align 4
+.align 1
+.globl Pages_mkHTML_closure
+Pages_mkHTML_closure:
+	.long	Pages_mkHTML_info
+	.long	0
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(s8uC_info)+16
+	.long	1
+	.long	65553
+s8uC_info:
+.Lc8CQ:
+	leal -12(%ebp),%eax
+	cmpl 840(%ebx),%eax
+	jb .Lc8CR
+.Lc8CS:
+	movl $stg_upd_frame_info,-12(%ebp)
+	movl %esi,-8(%ebp)
+	movl 12(%esi),%eax
+	movl %eax,16(%ebx)
+	movl $Pages_mkHTML1_closure,8(%ebx)
+	addl $-12,%ebp
+	jmp FxthDgO5vhFC0dVxe1OwkF_HasteziDOM_zeZC_info
+.Lc8CR:
+	jmp *-16(%ebx)
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(Pages_mkHTML_info)+12
+	.long	65541
+	.long	0
+	.long	2031631
+.globl Pages_mkHTML_info
+Pages_mkHTML_info:
+.Lc8CU:
+	addl $28,%edi
+	movl 8(%ebx),%eax
+	cmpl 856(%ebx),%edi
+	ja .Lc8CY
+.Lc8CX:
+	movl $s8uC_info,-24(%edi)
+	movl %eax,-12(%edi)
+	movl $ghczmprim_GHCziTypes_ZC_con_info,-8(%edi)
+	leal -24(%edi),%eax
+	movl %eax,-4(%edi)
+	movl $ghczmprim_GHCziTypes_ZMZN_closure+1,(%edi)
+	leal -6(%edi),%eax
+	movl %eax,32(%ebx)
+	movl $Pages_mkHTML2_closure+1,24(%ebx)
+	movl $LlHybR7LOSS7VAc0pG6N16_ControlziMonadziIOziClass_zdfMonadIOIO_closure,16(%ebx)
+	movl $FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziCore_zdfIsElemElem_closure,8(%ebx)
+	jmp FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziCore_with_info
+.Lc8CY:
+	movl $28,904(%ebx)
+	movl %eax,8(%ebx)
+	movl $Pages_mkHTML_closure,%esi
+	jmp *-8(%ebx)
+.data
+	.align 4
+.align 1
+.globl Pages_mkButton2_closure
+Pages_mkButton2_closure:
+	.long	Pages_mkButton2_info
+	.long	0
+.section .rodata
+	.align 4
+.align 1
+c8Dp_str:
+	.byte	98
+	.byte	117
+	.byte	116
+	.byte	116
+	.byte	111
+	.byte	110
+	.byte	0
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(Pages_mkButton2_info)+4
+	.long	65539
+	.long	0
+	.long	8454159
+.globl Pages_mkButton2_info
+Pages_mkButton2_info:
+.Lc8Ds:
+	leal -8(%ebp),%eax
+	cmpl 840(%ebx),%eax
+	jb .Lc8DQ
+.Lc8DR:
+	movl $c8Dq_info,-4(%ebp)
+	movl $c8Dp_str,8(%ebx)
+	addl $-4,%ebp
+	jmp ghczmprim_GHCziCString_unpackCStringzh_info
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(c8Dq_info)+4
+	.long	0
+	.long	65568
+c8Dq_info:
+.Lc8Dq:
+	movl $c8Dv_info,(%ebp)
+	jmp toJSStr
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(c8Dv_info)+4
+	.long	0
+	.long	65568
+c8Dv_info:
+.Lc8Dv:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8DV
+.Lc8DU:
+	movl $ghczmprim_GHCziTypes_Izh_con_info,-4(%edi)
+	movl %esi,(%edi)
+	movl $c8DF_info,-4(%ebp)
+	movl $FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziJSString_newElemzuf1_closure,%esi
+	movl (%edi),%eax
+	movl %eax,(%ebp)
+	addl $-4,%ebp
+	testw $7,%si
+	jne .Lc8DF
+.Lc8DG:
+	jmp *(%esi)
+.text
+	.align 4,0x90
+	.long	65
+	.long	32
+c8DF_info:
+.Lc8DF:
+	movl 4(%ebp),%eax
+	movl $c8DN_info,4(%ebp)
+	addl $4,%ebp
+	movl 3(%esi),%ecx
+	movl 872(%ebx),%edx
+	movl %ecx,64(%esp)
+	movl 20(%edx),%ecx
+	movl %ebp,12(%ecx)
+	movl 888(%ebx),%ecx
+	movl %eax,76(%esp)
+	leal 4(%edi),%eax
+	movl %eax,8(%ecx)
+	movl 100(%edx),%eax
+	movl %eax,88(%esp)
+	movl 104(%edx),%eax
+	movl %eax,100(%esp)
+	leal 4(%edi),%eax
+	subl (%ecx),%eax
+	xorl %ecx,%ecx
+	movl %ecx,112(%esp)
+	movl 88(%esp),%ecx
+	subl %eax,%ecx
+	movl 100(%esp),%eax
+	movl %ecx,124(%esp)
+	movl 112(%esp),%ecx
+	sbbl %ecx,%eax
+	movl 124(%esp),%ecx
+	movl %ecx,100(%edx)
+	movl %eax,104(%edx)
+	subl $4,%esp
+	pushl $0
+	pushl %ebx
+	call suspendThread
+	addl $12,%esp
+	subl $4,%esp
+	movl 80(%esp),%ecx
+	pushl %ecx
+	movl 72(%esp),%ecx
+	pushl %ecx
+	movl %eax,148(%esp)
+	call __app1
+	addl $12,%esp
+	subl $8,%esp
+	movl 144(%esp),%ecx
+	pushl %ecx
+	movl %eax,160(%esp)
+	call resumeThread
+	addl $12,%esp
+	movl %eax,%ebx
+	movl 872(%ebx),%eax
+	movl 20(%eax),%ecx
+	movl 12(%ecx),%ebp
+	addl $104,%ecx
+	movl %ecx,840(%ebx)
+	movl $0,904(%ebx)
+	movl 888(%ebx),%ecx
+	movl 8(%ecx),%edx
+	leal -4(%edx),%edi
+	movl %eax,160(%esp)
+	movl (%ecx),%eax
+	movl 48(%ecx),%ecx
+	shll $12,%ecx
+	decl %ecx
+	movl %ecx,172(%esp)
+	movl %eax,%ecx
+	movl %edx,184(%esp)
+	movl 172(%esp),%edx
+	addl %edx,%ecx
+	movl %ecx,856(%ebx)
+	movl 160(%esp),%ecx
+	movl 100(%ecx),%edx
+	movl 104(%ecx),%ecx
+	movl %ecx,196(%esp)
+	movl 184(%esp),%ecx
+	subl %eax,%ecx
+	xorl %eax,%eax
+	addl %ecx,%edx
+	movl 196(%esp),%ecx
+	adcl %eax,%ecx
+	movl 160(%esp),%eax
+	movl %edx,100(%eax)
+	movl %ecx,104(%eax)
+	movl 148(%esp),%eax
+	movl %eax,%esi
+	jmp *(%ebp)
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8DN_info:
+.Lc8DN:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8E0
+.Lc8DZ:
+	movl $base_GHCziPtr_Ptr_con_info,-4(%edi)
+	movl %esi,(%edi)
+	leal -3(%edi),%esi
+	addl $4,%ebp
+	jmp *(%ebp)
+.Lc8DQ:
+	movl $Pages_mkButton2_closure,%esi
+	jmp *-8(%ebx)
+.Lc8DV:
+	movl $8,904(%ebx)
+	jmp stg_gc_unbx_r1
+.Lc8E0:
+	movl $8,904(%ebx)
+	jmp stg_gc_unbx_r1
+.data
+	.align 4
+.align 1
+.globl Pages_mkButton1_closure
+Pages_mkButton1_closure:
+	.long	Pages_mkButton1_info
+	.long	0
+	.long	0
+	.long	0
+.section .rodata
+	.align 4
+.align 1
+c8EK_str:
+	.byte	116
+	.byte	101
+	.byte	120
+	.byte	116
+	.byte	67
+	.byte	111
+	.byte	110
+	.byte	116
+	.byte	101
+	.byte	110
+	.byte	116
+	.byte	0
+.text
+	.align 4,0x90
+	.long	0
+	.long	22
+.globl Pages_mkButton1_info
+Pages_mkButton1_info:
+.Lc8EN:
+	leal -16(%ebp),%eax
+	cmpl 840(%ebx),%eax
+	jb .Lc8F1
+.Lc8F2:
+	subl $4,%esp
+	pushl %esi
+	pushl %ebx
+	call newCAF
+	addl $12,%esp
+	testl %eax,%eax
+	je .Lc8EJ
+.Lc8EI:
+	movl $stg_bh_upd_frame_info,-12(%ebp)
+	movl %eax,-8(%ebp)
+	movl $c8EL_info,-16(%ebp)
+	movl $c8EK_str,8(%ebx)
+	addl $-16,%ebp
+	jmp ghczmprim_GHCziCString_unpackCStringzh_info
+.Lc8EJ:
+	jmp *(%esi)
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8EL_info:
+.Lc8EL:
+	movl $c8EQ_info,(%ebp)
+	jmp toJSStr
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8EQ_info:
+.Lc8EQ:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8F6
+.Lc8F5:
+	movl $ghczmprim_GHCziTypes_Izh_con_info,-4(%edi)
+	movl %esi,(%edi)
+	leal -3(%edi),%eax
+.Lc8EY:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8F9
+.Lc8F8:
+	movl 3(%eax),%eax
+	movl $FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziCore_PropName_con_info,-4(%edi)
+	movl %eax,(%edi)
+	leal -3(%edi),%esi
+	addl $4,%ebp
+	jmp *(%ebp)
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8EX_info:
+.Lc8EX:
+	movl %esi,%eax
+	jmp .Lc8EY
+.Lc8F1:
+	jmp *-16(%ebx)
+.Lc8F6:
+	movl $8,904(%ebx)
+	jmp stg_gc_unbx_r1
+.Lc8F9:
+	movl $8,904(%ebx)
+	movl $c8EX_info,(%ebp)
+	movl %eax,%esi
+	jmp stg_gc_unpt_r1
+.data
+	.align 4
+.align 1
+.globl Pages_mkButton_closure
+Pages_mkButton_closure:
+	.long	Pages_mkButton_info
+	.long	0
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(s8uX_info)+36
+	.long	1
+	.long	65553
+s8uX_info:
+.Lc8Fo:
+	leal -12(%ebp),%eax
+	cmpl 840(%ebx),%eax
+	jb .Lc8Fp
+.Lc8Fq:
+	movl $stg_upd_frame_info,-12(%ebp)
+	movl %esi,-8(%ebp)
+	movl 12(%esi),%eax
+	movl %eax,16(%ebx)
+	movl $Pages_mkButton1_closure,8(%ebx)
+	addl $-12,%ebp
+	jmp FxthDgO5vhFC0dVxe1OwkF_HasteziDOM_zeZC_info
+.Lc8Fp:
+	jmp *-16(%ebx)
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(Pages_mkButton_info)+20
+	.long	65541
+	.long	0
+	.long	3997711
+.globl Pages_mkButton_info
+Pages_mkButton_info:
+.Lc8Fs:
+	addl $28,%edi
+	movl 8(%ebx),%eax
+	cmpl 856(%ebx),%edi
+	ja .Lc8Fw
+.Lc8Fv:
+	movl $s8uX_info,-24(%edi)
+	movl %eax,-12(%edi)
+	movl $ghczmprim_GHCziTypes_ZC_con_info,-8(%edi)
+	leal -24(%edi),%eax
+	movl %eax,-4(%edi)
+	movl $ghczmprim_GHCziTypes_ZMZN_closure+1,(%edi)
+	leal -6(%edi),%eax
+	movl %eax,32(%ebx)
+	movl $Pages_mkButton2_closure+1,24(%ebx)
+	movl $LlHybR7LOSS7VAc0pG6N16_ControlziMonadziIOziClass_zdfMonadIOIO_closure,16(%ebx)
+	movl $FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziCore_zdfIsElemElem_closure,8(%ebx)
+	jmp FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziCore_with_info
+.Lc8Fw:
+	movl $28,904(%ebx)
+	movl %eax,8(%ebx)
+	movl $Pages_mkButton_closure,%esi
+	jmp *-8(%ebx)
+.data
+	.align 4
+.align 1
+.globl Pages_mkInput4_closure
+Pages_mkInput4_closure:
+	.long	Pages_mkInput4_info
+	.long	0
+.section .rodata
+	.align 4
+.align 1
+c8FX_str:
+	.byte	105
+	.byte	110
+	.byte	112
+	.byte	117
+	.byte	116
+	.byte	0
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(Pages_mkInput4_info)+4
+	.long	65539
+	.long	0
+	.long	67174415
+.globl Pages_mkInput4_info
+Pages_mkInput4_info:
+.Lc8G0:
+	leal -8(%ebp),%eax
+	cmpl 840(%ebx),%eax
+	jb .Lc8Go
+.Lc8Gp:
+	movl $c8FY_info,-4(%ebp)
+	movl $c8FX_str,8(%ebx)
+	addl $-4,%ebp
+	jmp ghczmprim_GHCziCString_unpackCStringzh_info
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(c8FY_info)+4
+	.long	0
+	.long	65568
+c8FY_info:
+.Lc8FY:
+	movl $c8G3_info,(%ebp)
+	jmp toJSStr
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(c8G3_info)+4
+	.long	0
+	.long	65568
+c8G3_info:
+.Lc8G3:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8Gt
+.Lc8Gs:
+	movl $ghczmprim_GHCziTypes_Izh_con_info,-4(%edi)
+	movl %esi,(%edi)
+	movl $c8Gd_info,-4(%ebp)
+	movl $FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziJSString_newElemzuf1_closure,%esi
+	movl (%edi),%eax
+	movl %eax,(%ebp)
+	addl $-4,%ebp
+	testw $7,%si
+	jne .Lc8Gd
+.Lc8Ge:
+	jmp *(%esi)
+.text
+	.align 4,0x90
+	.long	65
+	.long	32
+c8Gd_info:
+.Lc8Gd:
+	movl 4(%ebp),%eax
+	movl $c8Gl_info,4(%ebp)
+	addl $4,%ebp
+	movl 3(%esi),%ecx
+	movl 872(%ebx),%edx
+	movl %ecx,64(%esp)
+	movl 20(%edx),%ecx
+	movl %ebp,12(%ecx)
+	movl 888(%ebx),%ecx
+	movl %eax,76(%esp)
+	leal 4(%edi),%eax
+	movl %eax,8(%ecx)
+	movl 100(%edx),%eax
+	movl %eax,88(%esp)
+	movl 104(%edx),%eax
+	movl %eax,100(%esp)
+	leal 4(%edi),%eax
+	subl (%ecx),%eax
+	xorl %ecx,%ecx
+	movl %ecx,112(%esp)
+	movl 88(%esp),%ecx
+	subl %eax,%ecx
+	movl 100(%esp),%eax
+	movl %ecx,124(%esp)
+	movl 112(%esp),%ecx
+	sbbl %ecx,%eax
+	movl 124(%esp),%ecx
+	movl %ecx,100(%edx)
+	movl %eax,104(%edx)
+	subl $4,%esp
+	pushl $0
+	pushl %ebx
+	call suspendThread
+	addl $12,%esp
+	subl $4,%esp
+	movl 80(%esp),%ecx
+	pushl %ecx
+	movl 72(%esp),%ecx
+	pushl %ecx
+	movl %eax,148(%esp)
+	call __app1
+	addl $12,%esp
+	subl $8,%esp
+	movl 144(%esp),%ecx
+	pushl %ecx
+	movl %eax,160(%esp)
+	call resumeThread
+	addl $12,%esp
+	movl %eax,%ebx
+	movl 872(%ebx),%eax
+	movl 20(%eax),%ecx
+	movl 12(%ecx),%ebp
+	addl $104,%ecx
+	movl %ecx,840(%ebx)
+	movl $0,904(%ebx)
+	movl 888(%ebx),%ecx
+	movl 8(%ecx),%edx
+	leal -4(%edx),%edi
+	movl %eax,160(%esp)
+	movl (%ecx),%eax
+	movl 48(%ecx),%ecx
+	shll $12,%ecx
+	decl %ecx
+	movl %ecx,172(%esp)
+	movl %eax,%ecx
+	movl %edx,184(%esp)
+	movl 172(%esp),%edx
+	addl %edx,%ecx
+	movl %ecx,856(%ebx)
+	movl 160(%esp),%ecx
+	movl 100(%ecx),%edx
+	movl 104(%ecx),%ecx
+	movl %ecx,196(%esp)
+	movl 184(%esp),%ecx
+	subl %eax,%ecx
+	xorl %eax,%eax
+	addl %ecx,%edx
+	movl 196(%esp),%ecx
+	adcl %eax,%ecx
+	movl 160(%esp),%eax
+	movl %edx,100(%eax)
+	movl %ecx,104(%eax)
+	movl 148(%esp),%eax
+	movl %eax,%esi
+	jmp *(%ebp)
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8Gl_info:
+.Lc8Gl:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8Gy
+.Lc8Gx:
+	movl $base_GHCziPtr_Ptr_con_info,-4(%edi)
+	movl %esi,(%edi)
+	leal -3(%edi),%esi
+	addl $4,%ebp
+	jmp *(%ebp)
+.Lc8Go:
+	movl $Pages_mkInput4_closure,%esi
+	jmp *-8(%ebx)
+.Lc8Gt:
+	movl $8,904(%ebx)
+	jmp stg_gc_unbx_r1
+.Lc8Gy:
+	movl $8,904(%ebx)
+	jmp stg_gc_unbx_r1
+.data
+	.align 4
+.align 1
+.globl Pages_mkInput3_closure
+Pages_mkInput3_closure:
+	.long	Pages_mkInput3_info
+	.long	0
+	.long	0
+	.long	0
+.section .rodata
+	.align 4
+.align 1
+c8Hr_str:
+	.byte	116
+	.byte	121
+	.byte	112
+	.byte	101
+	.byte	0
+.section .rodata
+	.align 4
+.align 1
+c8HH_str:
+	.byte	116
+	.byte	101
+	.byte	120
+	.byte	116
+	.byte	0
+.text
+	.align 4,0x90
+	.long	0
+	.long	22
+.globl Pages_mkInput3_info
+Pages_mkInput3_info:
+.Lc8Hu:
+	leal -20(%ebp),%eax
+	cmpl 840(%ebx),%eax
+	jb .Lc8HY
+.Lc8HZ:
+	subl $4,%esp
+	pushl %esi
+	pushl %ebx
+	call newCAF
+	addl $12,%esp
+	testl %eax,%eax
+	je .Lc8Hq
+.Lc8Hp:
+	movl $stg_bh_upd_frame_info,-12(%ebp)
+	movl %eax,-8(%ebp)
+	movl $c8Hs_info,-16(%ebp)
+	movl $c8Hr_str,8(%ebx)
+	addl $-16,%ebp
+	jmp ghczmprim_GHCziCString_unpackCStringzh_info
+.Lc8Hq:
+	jmp *(%esi)
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8Hs_info:
+.Lc8Hs:
+	movl $c8Hx_info,(%ebp)
+	jmp toJSStr
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8Hx_info:
+.Lc8Hx:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8I3
+.Lc8I2:
+	movl $ghczmprim_GHCziTypes_Izh_con_info,-4(%edi)
+	movl %esi,(%edi)
+	movl $c8HI_info,-4(%ebp)
+	movl $c8HH_str,8(%ebx)
+	movl (%edi),%eax
+	movl %eax,(%ebp)
+	addl $-4,%ebp
+	jmp ghczmprim_GHCziCString_unpackCStringzh_info
+.text
+	.align 4,0x90
+	.long	65
+	.long	32
+c8HI_info:
+.Lc8HI:
+	movl $c8HM_info,(%ebp)
+	jmp toJSStr
+.text
+	.align 4,0x90
+	.long	65
+	.long	32
+c8HM_info:
+.Lc8HM:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8I8
+.Lc8I7:
+	movl $ghczmprim_GHCziTypes_Izh_con_info,-4(%edi)
+	movl %esi,(%edi)
+	movl 4(%ebp),%eax
+	leal -3(%edi),%ecx
+.Lc8HU:
+	addl $20,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8Ib
+.Lc8Ia:
+	movl 3(%ecx),%ecx
+	movl $FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziCore_AttrName_con_info,-16(%edi)
+	movl %eax,-12(%edi)
+	movl $FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziCore_Attribute_con_info,-8(%edi)
+	leal -13(%edi),%eax
+	movl %eax,-4(%edi)
+	movl %ecx,(%edi)
+	leal -7(%edi),%esi
+	addl $8,%ebp
+	jmp *(%ebp)
+.text
+	.align 4,0x90
+	.long	65
+	.long	32
+c8HT_info:
+.Lc8HT:
+	movl 4(%ebp),%eax
+	movl %esi,%ecx
+	jmp .Lc8HU
+.Lc8HY:
+	jmp *-16(%ebx)
+.Lc8I3:
+	movl $8,904(%ebx)
+	jmp stg_gc_unbx_r1
+.Lc8I8:
+	movl $8,904(%ebx)
+	jmp stg_gc_unbx_r1
+.Lc8Ib:
+	movl $20,904(%ebx)
+	movl $c8HT_info,(%ebp)
+	movl %ecx,%esi
+	jmp stg_gc_unpt_r1
+.data
+	.align 4
+.align 1
+.globl Pages_mkInput2_closure
+Pages_mkInput2_closure:
+	.long	Pages_mkInput2_info
+	.long	0
+	.long	0
+	.long	0
+.section .rodata
+	.align 4
+.align 1
+c8IA_str:
+	.byte	115
+	.byte	105
+	.byte	122
+	.byte	101
+	.byte	0
+.text
+	.align 4,0x90
+	.long	0
+	.long	22
+.globl Pages_mkInput2_info
+Pages_mkInput2_info:
+.Lc8ID:
+	leal -16(%ebp),%eax
+	cmpl 840(%ebx),%eax
+	jb .Lc8IR
+.Lc8IS:
+	subl $4,%esp
+	pushl %esi
+	pushl %ebx
+	call newCAF
+	addl $12,%esp
+	testl %eax,%eax
+	je .Lc8Iz
+.Lc8Iy:
+	movl $stg_bh_upd_frame_info,-12(%ebp)
+	movl %eax,-8(%ebp)
+	movl $c8IB_info,-16(%ebp)
+	movl $c8IA_str,8(%ebx)
+	addl $-16,%ebp
+	jmp ghczmprim_GHCziCString_unpackCStringzh_info
+.Lc8Iz:
+	jmp *(%esi)
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8IB_info:
+.Lc8IB:
+	movl $c8IG_info,(%ebp)
+	jmp toJSStr
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8IG_info:
+.Lc8IG:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8IW
+.Lc8IV:
+	movl $ghczmprim_GHCziTypes_Izh_con_info,-4(%edi)
+	movl %esi,(%edi)
+	leal -3(%edi),%eax
+.Lc8IO:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8IZ
+.Lc8IY:
+	movl 3(%eax),%eax
+	movl $FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziCore_AttrName_con_info,-4(%edi)
+	movl %eax,(%edi)
+	leal -1(%edi),%esi
+	addl $4,%ebp
+	jmp *(%ebp)
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8IN_info:
+.Lc8IN:
+	movl %esi,%eax
+	jmp .Lc8IO
+.Lc8IR:
+	jmp *-16(%ebx)
+.Lc8IW:
+	movl $8,904(%ebx)
+	jmp stg_gc_unbx_r1
+.Lc8IZ:
+	movl $8,904(%ebx)
+	movl $c8IN_info,(%ebp)
+	movl %eax,%esi
+	jmp stg_gc_unpt_r1
+.data
+	.align 4
+.align 1
+.globl Pages_mkInput1_closure
+Pages_mkInput1_closure:
+	.long	Pages_mkInput1_info
+	.long	0
+	.long	0
+	.long	0
+.section .rodata
+	.align 4
+.align 1
+c8Jl_str:
+	.byte	118
+	.byte	97
+	.byte	108
+	.byte	117
+	.byte	101
+	.byte	0
+.text
+	.align 4,0x90
+	.long	0
+	.long	22
+.globl Pages_mkInput1_info
+Pages_mkInput1_info:
+.Lc8Jo:
+	leal -16(%ebp),%eax
+	cmpl 840(%ebx),%eax
+	jb .Lc8JC
+.Lc8JD:
+	subl $4,%esp
+	pushl %esi
+	pushl %ebx
+	call newCAF
+	addl $12,%esp
+	testl %eax,%eax
+	je .Lc8Jk
+.Lc8Jj:
+	movl $stg_bh_upd_frame_info,-12(%ebp)
+	movl %eax,-8(%ebp)
+	movl $c8Jm_info,-16(%ebp)
+	movl $c8Jl_str,8(%ebx)
+	addl $-16,%ebp
+	jmp ghczmprim_GHCziCString_unpackCStringzh_info
+.Lc8Jk:
+	jmp *(%esi)
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8Jm_info:
+.Lc8Jm:
+	movl $c8Jr_info,(%ebp)
+	jmp toJSStr
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8Jr_info:
+.Lc8Jr:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8JH
+.Lc8JG:
+	movl $ghczmprim_GHCziTypes_Izh_con_info,-4(%edi)
+	movl %esi,(%edi)
+	leal -3(%edi),%eax
+.Lc8Jz:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8JK
+.Lc8JJ:
+	movl 3(%eax),%eax
+	movl $FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziCore_AttrName_con_info,-4(%edi)
+	movl %eax,(%edi)
+	leal -1(%edi),%esi
+	addl $4,%ebp
+	jmp *(%ebp)
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8Jy_info:
+.Lc8Jy:
+	movl %esi,%eax
+	jmp .Lc8Jz
+.Lc8JC:
+	jmp *-16(%ebx)
+.Lc8JH:
+	movl $8,904(%ebx)
+	jmp stg_gc_unbx_r1
+.Lc8JK:
+	movl $8,904(%ebx)
+	movl $c8Jy_info,(%ebp)
+	movl %eax,%esi
+	jmp stg_gc_unpt_r1
+.data
+	.align 4
+.align 1
+.globl Pages_mkInput_closure
+Pages_mkInput_closure:
+	.long	Pages_mkInput_info
+	.long	0
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(s8vI_info)+48
+	.long	1
+	.long	65553
+s8vI_info:
+.Lc8Kh:
+	leal -12(%ebp),%eax
+	cmpl 840(%ebx),%eax
+	jb .Lc8Ki
+.Lc8Kj:
+	movl $stg_upd_frame_info,-12(%ebp)
+	movl %esi,-8(%ebp)
+	movl 12(%esi),%eax
+	movl %eax,16(%ebx)
+	movl $Pages_mkInput1_closure,8(%ebx)
+	addl $-12,%ebp
+	jmp FxthDgO5vhFC0dVxe1OwkF_HasteziDOM_zeZC_info
+.Lc8Ki:
+	jmp *-16(%ebx)
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(s8vH_info)+52
+	.long	1
+	.long	65553
+s8vH_info:
+.Lc8Ks:
+	leal -20(%ebp),%eax
+	cmpl 840(%ebx),%eax
+	jb .Lc8KP
+.Lc8KQ:
+	movl $stg_upd_frame_info,-12(%ebp)
+	movl %esi,-8(%ebp)
+	movl $c8Kp_info,-20(%ebp)
+	movl 12(%esi),%eax
+	movl $Pages_mkInput2_closure,%esi
+	movl %eax,-16(%ebp)
+	addl $-20,%ebp
+	testw $7,%si
+	jne .Lc8Kp
+.Lc8Kq:
+	jmp *(%esi)
+.text
+	.align 4,0x90
+	.long	1
+	.long	32
+c8Kp_info:
+.Lc8Kp:
+	movl $c8Kv_info,(%ebp)
+	movl %esi,%eax
+	movl 4(%ebp),%esi
+	movl %eax,4(%ebp)
+	testw $7,%si
+	jne .Lc8Kv
+.Lc8Kw:
+	jmp *(%esi)
+.text
+	.align 4,0x90
+	.long	1
+	.long	32
+c8Kv_info:
+.Lc8Kv:
+	movl $c8KA_info,(%ebp)
+	movl $ghczmprim_GHCziTypes_ZMZN_closure+1,24(%ebx)
+	movl 3(%esi),%eax
+	movl %eax,16(%ebx)
+	movl $0,8(%ebx)
+	jmp base_GHCziShow_zdwshowSignedInt_info
+.text
+	.align 4,0x90
+	.long	1
+	.long	32
+c8KA_info:
+.Lc8KA:
+	movl $c8KE_info,(%ebp)
+	jmp toJSStr
+.text
+	.align 4,0x90
+	.long	1
+	.long	32
+c8KE_info:
+.Lc8KE:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8KW
+.Lc8KV:
+	movl $ghczmprim_GHCziTypes_Izh_con_info,-4(%edi)
+	movl %esi,(%edi)
+	movl 4(%ebp),%eax
+	leal -3(%edi),%ecx
+.Lc8KM:
+	addl $12,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8KZ
+.Lc8KY:
+	movl 3(%ecx),%ecx
+	movl $FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziCore_Attribute_con_info,-8(%edi)
+	movl %eax,-4(%edi)
+	movl %ecx,(%edi)
+	leal -7(%edi),%esi
+	addl $8,%ebp
+	jmp *(%ebp)
+.text
+	.align 4,0x90
+	.long	1
+	.long	32
+c8KL_info:
+.Lc8KL:
+	movl 4(%ebp),%eax
+	movl %esi,%ecx
+	jmp .Lc8KM
+.Lc8KP:
+	jmp *-16(%ebx)
+.Lc8KW:
+	movl $8,904(%ebx)
+	jmp stg_gc_unbx_r1
+.Lc8KZ:
+	movl $12,904(%ebx)
+	movl $c8KL_info,(%ebp)
+	movl %ecx,%esi
+	jmp stg_gc_unpt_r1
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(Pages_mkInput_info)+20
+	.long	131087
+	.long	0
+	.long	130351119
+.globl Pages_mkInput_info
+Pages_mkInput_info:
+.Lc8L2:
+	addl $68,%edi
+	movl 16(%ebx),%eax
+	movl 8(%ebx),%ecx
+	cmpl 856(%ebx),%edi
+	ja .Lc8L6
+.Lc8L5:
+	movl $s8vI_info,-64(%edi)
+	movl %eax,-52(%edi)
+	movl $ghczmprim_GHCziTypes_ZC_con_info,-48(%edi)
+	leal -64(%edi),%eax
+	movl %eax,-44(%edi)
+	movl $ghczmprim_GHCziTypes_ZMZN_closure+1,-40(%edi)
+	movl $s8vH_info,-36(%edi)
+	movl %ecx,-24(%edi)
+	movl $ghczmprim_GHCziTypes_ZC_con_info,-20(%edi)
+	leal -36(%edi),%eax
+	movl %eax,-16(%edi)
+	leal -46(%edi),%eax
+	movl %eax,-12(%edi)
+	movl $ghczmprim_GHCziTypes_ZC_con_info,-8(%edi)
+	movl $Pages_mkInput3_closure,-4(%edi)
+	leal -18(%edi),%eax
+	movl %eax,(%edi)
+	leal -6(%edi),%eax
+	movl %eax,32(%ebx)
+	movl $Pages_mkInput4_closure+1,24(%ebx)
+	movl $LlHybR7LOSS7VAc0pG6N16_ControlziMonadziIOziClass_zdfMonadIOIO_closure,16(%ebx)
+	movl $FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziCore_zdfIsElemElem_closure,8(%ebx)
+	jmp FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziCore_with_info
+.Lc8L6:
+	movl $68,904(%ebx)
+	movl %eax,16(%ebx)
+	movl %ecx,8(%ebx)
+	movl $Pages_mkInput_closure,%esi
+	jmp *-8(%ebx)
+.data
+	.align 4
+.align 1
+.globl Pages_appendChildren1_closure
+Pages_appendChildren1_closure:
+	.long	Pages_appendChildren1_info
+	.long	0
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(Pages_appendChildren1_info)+64
+	.long	196623
+	.long	0
+	.long	196623
+.globl Pages_appendChildren1_info
+Pages_appendChildren1_info:
+.Lc8M0:
+	movl 16(%ebx),%eax
+	movl 8(%ebx),%ecx
+	leal -16(%ebp),%edx
+	cmpl 840(%ebx),%edx
+	jb .Lc8M1
+.Lc8M2:
+	movl $c8LQ_info,-8(%ebp)
+	movl %eax,%esi
+	movl %ecx,-4(%ebp)
+	addl $-8,%ebp
+	testw $7,%si
+	jne .Lc8LQ
+.Lc8LR:
+	jmp *(%esi)
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(c8LQ_info)+64
+	.long	1
+	.long	65568
+c8LQ_info:
+.Lc8LQ:
+	movl %esi,%eax
+	andl $7,%eax
+	cmpl $2,%eax
+	jb .Lc8N6
+.Lc8LY:
+	movl $c8M8_info,-4(%ebp)
+	movl 6(%esi),%eax
+	movl 2(%esi),%esi
+	movl %eax,(%ebp)
+	addl $-4,%ebp
+	testw $7,%si
+	jne .Lc8M8
+.Lc8M9:
+	jmp *(%esi)
+.Lc8M1:
+	movl %eax,16(%ebx)
+	movl %ecx,8(%ebx)
+	movl $Pages_appendChildren1_closure,%esi
+	jmp *-8(%ebx)
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(c8M8_info)+64
+	.long	2
+	.long	65568
+c8M8_info:
+.Lc8M8:
+	movl $c8Md_info,(%ebp)
+	movl 3(%esi),%eax
+	movl 8(%ebp),%esi
+	movl %eax,8(%ebp)
+	testw $7,%si
+	jne .Lc8Md
+.Lc8Me:
+	jmp *(%esi)
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(c8Md_info)+64
+	.long	130
+	.long	65568
+c8Md_info:
+.Lc8Md:
+	movl $c8Mi_info,-4(%ebp)
+	movl 3(%esi),%eax
+	movl $FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziCore_appendChildzuf1_closure,%esi
+	movl %eax,(%ebp)
+	addl $-4,%ebp
+	testw $7,%si
+	jne .Lc8Mi
+.Lc8Mm:
+	jmp *(%esi)
+.text
+	.align 4,0x90
+	.long	323
+	.long	32
+c8Mi_info:
+.Lc8Mi:
+	movl $c8Mv_info,(%ebp)
+	movl 3(%esi),%eax
+	movl 12(%ebp),%ecx
+	movl %eax,12(%ebp)
+	movl 4(%ebp),%edx
+	movl %ecx,64(%esp)
+	movl 872(%ebx),%ecx
+	movl %edx,76(%esp)
+	movl 20(%ecx),%edx
+	movl %ebp,12(%edx)
+	movl 888(%ebx),%edx
+	movl %eax,88(%esp)
+	leal 4(%edi),%eax
+	movl %eax,8(%edx)
+	movl 100(%ecx),%eax
+	movl %eax,100(%esp)
+	movl 104(%ecx),%eax
+	movl %eax,112(%esp)
+	leal 4(%edi),%eax
+	subl (%edx),%eax
+	xorl %edx,%edx
+	movl %edx,124(%esp)
+	movl 100(%esp),%edx
+	subl %eax,%edx
+	movl 112(%esp),%eax
+	movl %edx,136(%esp)
+	movl 124(%esp),%edx
+	sbbl %edx,%eax
+	movl 136(%esp),%edx
+	movl %edx,100(%ecx)
+	movl %eax,104(%ecx)
+	subl $4,%esp
+	pushl $0
+	pushl %ebx
+	call suspendThread
+	addl $12,%esp
+	movl 76(%esp),%ecx
+	pushl %ecx
+	movl 68(%esp),%ecx
+	pushl %ecx
+	movl 96(%esp),%ecx
+	pushl %ecx
+	movl %eax,160(%esp)
+	call __app2
+	addl $12,%esp
+	subl $8,%esp
+	movl 156(%esp),%ecx
+	pushl %ecx
+	movl %eax,172(%esp)
+	call resumeThread
+	addl $12,%esp
+	movl %eax,%ebx
+	movl 872(%ebx),%eax
+	movl 20(%eax),%ecx
+	movl 12(%ecx),%ebp
+	addl $104,%ecx
+	movl %ecx,840(%ebx)
+	movl $0,904(%ebx)
+	movl 888(%ebx),%ecx
+	movl 8(%ecx),%edx
+	leal -4(%edx),%edi
+	movl %eax,172(%esp)
+	movl (%ecx),%eax
+	movl 48(%ecx),%ecx
+	shll $12,%ecx
+	decl %ecx
+	movl %ecx,184(%esp)
+	movl %eax,%ecx
+	movl %edx,196(%esp)
+	movl 184(%esp),%edx
+	addl %edx,%ecx
+	movl %ecx,856(%ebx)
+	movl 172(%esp),%ecx
+	movl 100(%ecx),%edx
+	movl 104(%ecx),%ecx
+	movl %ecx,208(%esp)
+	movl 196(%esp),%ecx
+	subl %eax,%ecx
+	xorl %eax,%eax
+	addl %ecx,%edx
+	movl 208(%esp),%ecx
+	adcl %eax,%ecx
+	movl 172(%esp),%eax
+	movl %edx,100(%eax)
+	movl %ecx,104(%eax)
+	movl 160(%esp),%eax
+	movl %eax,%esi
+	jmp *(%ebp)
+.text
+	.align 4,0x90
+	.long	323
+	.long	32
+c8Mv_info:
+.Lc8Mv:
+	movl 8(%ebp),%eax
+.Lc8MB:
+	movl $c8MD_info,(%ebp)
+	movl %eax,%esi
+	testw $7,%si
+	jne .Lc8MD
+.Lc8MF:
+	jmp *(%esi)
+.text
+	.align 4,0x90
+	.long	323
+	.long	32
+c8N0_info:
+.Lc8N0:
+	movl 8(%ebp),%eax
+	jmp .Lc8MB
+.text
+	.align 4,0x90
+	.long	451
+	.long	32
+c8MD_info:
+.Lc8MD:
+	movl %esi,%eax
+	andl $7,%eax
+	cmpl $2,%eax
+	jae .Lc8N5
+.Lu8N7:
+	addl $8,%ebp
+.Lc8N6:
+	movl $ghczmprim_GHCziTuple_Z0T_closure+1,%esi
+	addl $8,%ebp
+	jmp *(%ebp)
+.text
+	.align 4,0x90
+	.long	323
+	.long	32
+c8MO_info:
+.Lc8MO:
+	movl $c8N0_info,(%ebp)
+	movl 12(%ebp),%eax
+	movl 3(%esi),%ecx
+	movl 4(%ebp),%edx
+	movl %eax,220(%esp)
+	movl 872(%ebx),%eax
+	movl %ecx,232(%esp)
+	movl 20(%eax),%ecx
+	movl %ebp,12(%ecx)
+	movl 888(%ebx),%ecx
+	movl %edx,244(%esp)
+	leal 4(%edi),%edx
+	movl %edx,8(%ecx)
+	movl 100(%eax),%edx
+	movl %edx,256(%esp)
+	movl 104(%eax),%edx
+	movl %edx,268(%esp)
+	leal 4(%edi),%edx
+	subl (%ecx),%edx
+	xorl %ecx,%ecx
+	movl %ecx,280(%esp)
+	movl 256(%esp),%ecx
+	subl %edx,%ecx
+	movl 268(%esp),%edx
+	movl %ecx,292(%esp)
+	movl 280(%esp),%ecx
+	sbbl %ecx,%edx
+	movl 292(%esp),%ecx
+	movl %ecx,100(%eax)
+	movl %edx,104(%eax)
+	subl $4,%esp
+	pushl $0
+	pushl %ebx
+	call suspendThread
+	addl $12,%esp
+	movl 244(%esp),%ecx
+	pushl %ecx
+	movl 236(%esp),%ecx
+	pushl %ecx
+	movl 228(%esp),%ecx
+	pushl %ecx
+	movl %eax,316(%esp)
+	call __app2
+	addl $12,%esp
+	subl $8,%esp
+	movl 312(%esp),%ecx
+	pushl %ecx
+	movl %eax,328(%esp)
+	call resumeThread
+	addl $12,%esp
+	movl %eax,%ebx
+	movl 872(%ebx),%eax
+	movl 20(%eax),%ecx
+	movl 12(%ecx),%ebp
+	addl $104,%ecx
+	movl %ecx,840(%ebx)
+	movl $0,904(%ebx)
+	movl 888(%ebx),%ecx
+	movl 8(%ecx),%edx
+	leal -4(%edx),%edi
+	movl %eax,328(%esp)
+	movl (%ecx),%eax
+	movl 48(%ecx),%ecx
+	shll $12,%ecx
+	decl %ecx
+	movl %ecx,340(%esp)
+	movl %eax,%ecx
+	movl %edx,352(%esp)
+	movl 340(%esp),%edx
+	addl %edx,%ecx
+	movl %ecx,856(%ebx)
+	movl 328(%esp),%ecx
+	movl 100(%ecx),%edx
+	movl 104(%ecx),%ecx
+	movl %ecx,364(%esp)
+	movl 352(%esp),%ecx
+	subl %eax,%ecx
+	xorl %eax,%eax
+	addl %ecx,%edx
+	movl 364(%esp),%ecx
+	adcl %eax,%ecx
+	movl 328(%esp),%eax
+	movl %edx,100(%eax)
+	movl %ecx,104(%eax)
+	movl 316(%esp),%eax
+	movl %eax,%esi
+	jmp *(%ebp)
+.Lc8N5:
+	movl $c8MO_info,(%ebp)
+	movl 6(%esi),%eax
+	movl 2(%esi),%esi
+	movl %eax,8(%ebp)
+	testw $7,%si
+	jne .Lc8MO
+.Lc8MR:
+	jmp *(%esi)
+.data
+	.align 4
+.align 1
+.globl Pages_appendChildren_closure
+Pages_appendChildren_closure:
+	.long	Pages_appendChildren_info
+	.long	0
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(Pages_appendChildren_info)+68
+	.long	196623
+	.long	0
+	.long	65551
+.globl Pages_appendChildren_info
+Pages_appendChildren_info:
+.Lc8O5:
+	movl 16(%ebx),%eax
+	movl %eax,16(%ebx)
+	movl 8(%ebx),%eax
+	movl %eax,8(%ebx)
+	jmp Pages_appendChildren1_info
+.data
+	.align 4
+.align 1
+.globl Pages_row_closure
+Pages_row_closure:
+	.long	Pages_row_info
+	.long	0
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(Pages_row_info)+68
+	.long	196623
+	.long	0
+	.long	65551
+.globl Pages_row_info
+Pages_row_info:
+.Lc8Oi:
+	movl 16(%ebx),%eax
+	movl %eax,16(%ebx)
+	movl 8(%ebx),%eax
+	movl %eax,8(%ebx)
+	jmp Pages_appendChildren1_info
+.data
+	.align 4
+.align 1
+.globl Pages_wrapDiv_closure
+Pages_wrapDiv_closure:
+	.long	Pages_wrapDiv_info
+	.long	0
+.section .data
+	.align 4
+.align 1
+u8OD_srtd:
+	.long	S8yY_srt+8
+	.long	17
+	.long	65577
+.text
+	.align 4,0x90
+	.long	u8OD_srtd-(Pages_wrapDiv_info)+0
+	.long	65541
+	.long	0
+	.long	-65521
+.globl Pages_wrapDiv_info
+Pages_wrapDiv_info:
+.Lc8Oy:
+	addl $32,%edi
+	movl 8(%ebx),%eax
+	cmpl 856(%ebx),%edi
+	ja .Lc8OC
+.Lc8OB:
+	movl $ghczmprim_GHCziTypes_ZC_con_info,-28(%edi)
+	movl %eax,-24(%edi)
+	movl $ghczmprim_GHCziTypes_ZMZN_closure+1,-20(%edi)
+	movl $FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziCore_Children_con_info,-16(%edi)
+	leal -26(%edi),%eax
+	movl %eax,-12(%edi)
+	movl $ghczmprim_GHCziTypes_ZC_con_info,-8(%edi)
+	leal -14(%edi),%eax
+	movl %eax,-4(%edi)
+	movl $ghczmprim_GHCziTypes_ZMZN_closure+1,(%edi)
+	leal -6(%edi),%eax
+	movl %eax,32(%ebx)
+	movl $Pages_mkDiv1_closure+1,24(%ebx)
+	movl $LlHybR7LOSS7VAc0pG6N16_ControlziMonadziIOziClass_zdfMonadIOIO_closure,16(%ebx)
+	movl $FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziCore_zdfIsElemElem_closure,8(%ebx)
+	jmp FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziCore_with_info
+.Lc8OC:
+	movl $32,904(%ebx)
+	movl %eax,8(%ebx)
+	movl $Pages_wrapDiv_closure,%esi
+	jmp *-8(%ebx)
+.data
+	.align 4
+.align 1
+.globl Pages_column2_closure
+Pages_column2_closure:
+	.long	Pages_column2_info
+.text
+	.align 4,0x90
+	.long	131077
+	.long	0
+	.long	15
+.globl Pages_column2_info
+Pages_column2_info:
+.Lc8P6:
+	movl 8(%ebx),%eax
+	leal -8(%ebp),%ecx
+	cmpl 840(%ebx),%ecx
+	jb .Lc8P7
+.Lc8P8:
+	movl $c8OW_info,-4(%ebp)
+	movl %eax,%esi
+	addl $-4,%ebp
+	testw $7,%si
+	jne .Lc8OW
+.Lc8OX:
+	jmp *(%esi)
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8OW_info:
+.Lc8OW:
+	movl %esi,%eax
+	andl $7,%eax
+	cmpl $2,%eax
+	jae .Lc8P4
+.Lc8P5:
+	movl $ghczmprim_GHCziTypes_ZMZN_closure+1,%esi
+	addl $4,%ebp
+	jmp *(%ebp)
+.Lc8P4:
+	movl $c8Pe_info,-4(%ebp)
+	movl 6(%esi),%eax
+	movl 2(%esi),%esi
+	movl %eax,(%ebp)
+	addl $-4,%ebp
+	jmp stg_ap_v_fast
+.Lc8P7:
+	movl %eax,8(%ebx)
+	movl $Pages_column2_closure,%esi
+	jmp *-8(%ebx)
+.text
+	.align 4,0x90
+	.long	1
+	.long	32
+c8Pe_info:
+.Lc8Pe:
+	movl $c8Pg_info,(%ebp)
+	movl 4(%ebp),%eax
+	movl %eax,8(%ebx)
+	movl %esi,4(%ebp)
+	jmp Pages_column2_info
+.text
+	.align 4,0x90
+	.long	1
+	.long	32
+c8Pg_info:
+.Lc8Pg:
+	addl $12,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8Pn
+.Lc8Pm:
+	movl $ghczmprim_GHCziTypes_ZC_con_info,-8(%edi)
+	movl 4(%ebp),%eax
+	movl %eax,-4(%edi)
+	movl %esi,(%edi)
+	leal -6(%edi),%esi
+	addl $8,%ebp
+	jmp *(%ebp)
+.Lc8Pn:
+	movl $12,904(%ebx)
+	jmp stg_gc_unpt_r1
+.data
+	.align 4
+.align 1
+.globl Pages_columnzugo_closure
+Pages_columnzugo_closure:
+	.long	Pages_columnzugo_info
+	.long	0
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(s8wz_info)+76
+	.long	1
+	.long	65553
+s8wz_info:
+.Lc8PR:
+	leal -12(%ebp),%eax
+	cmpl 840(%ebx),%eax
+	jb .Lc8PS
+.Lc8PT:
+	movl $stg_upd_frame_info,-12(%ebp)
+	movl %esi,-8(%ebp)
+	movl 12(%esi),%eax
+	movl %eax,8(%ebx)
+	addl $-12,%ebp
+	jmp Pages_columnzugo_info
+.Lc8PS:
+	jmp *-16(%ebx)
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(s8wy_info)+72
+	.long	1
+	.long	65553
+s8wy_info:
+.Lc8PY:
+	leal -12(%ebp),%eax
+	cmpl 840(%ebx),%eax
+	jb .Lc8PZ
+.Lc8Q0:
+	movl $stg_upd_frame_info,-12(%ebp)
+	movl %esi,-8(%ebp)
+	movl 12(%esi),%eax
+	movl %eax,8(%ebx)
+	addl $-12,%ebp
+	jmp Pages_wrapDiv_info
+.Lc8PZ:
+	jmp *-16(%ebx)
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(Pages_columnzugo_info)+72
+	.long	65541
+	.long	0
+	.long	196623
+.globl Pages_columnzugo_info
+Pages_columnzugo_info:
+.Lc8Q8:
+	movl 8(%ebx),%eax
+	leal -4(%ebp),%ecx
+	cmpl 840(%ebx),%ecx
+	jb .Lc8Q9
+.Lc8Qa:
+	movl $c8PH_info,-4(%ebp)
+	movl %eax,%esi
+	addl $-4,%ebp
+	testw $7,%si
+	jne .Lc8PH
+.Lc8PI:
+	jmp *(%esi)
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(c8PH_info)+72
+	.long	0
+	.long	196640
+c8PH_info:
+.Lc8PH:
+	movl %esi,%eax
+	andl $7,%eax
+	cmpl $2,%eax
+	jae .Lc8Q6
+.Lc8Q7:
+	movl $ghczmprim_GHCziTypes_ZMZN_closure+1,%esi
+	addl $4,%ebp
+	jmp *(%ebp)
+.Lc8Q6:
+	addl $44,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8Qg
+.Lc8Qf:
+	movl 2(%esi),%eax
+	movl 6(%esi),%ecx
+	movl $s8wz_info,-40(%edi)
+	movl %ecx,-28(%edi)
+	movl $s8wy_info,-24(%edi)
+	movl %eax,-12(%edi)
+	movl $ghczmprim_GHCziTypes_ZC_con_info,-8(%edi)
+	leal -24(%edi),%eax
+	movl %eax,-4(%edi)
+	leal -40(%edi),%eax
+	movl %eax,(%edi)
+	leal -6(%edi),%esi
+	addl $4,%ebp
+	jmp *(%ebp)
+.Lc8Q9:
+	movl %eax,8(%ebx)
+	movl $Pages_columnzugo_closure,%esi
+	jmp *-8(%ebx)
+.Lc8Qg:
+	movl $44,904(%ebx)
+	jmp stg_gc_unpt_r1
+.data
+	.align 4
+.align 1
+.globl Pages_column1_closure
+Pages_column1_closure:
+	.long	Pages_column1_info
+	.long	0
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(Pages_column1_info)+68
+	.long	196623
+	.long	0
+	.long	851983
+.globl Pages_column1_info
+Pages_column1_info:
+.Lc8QH:
+	movl 16(%ebx),%eax
+	movl 8(%ebx),%ecx
+	leal -8(%ebp),%edx
+	cmpl 840(%ebx),%edx
+	jb .Lc8QL
+.Lc8QM:
+	movl $c8QF_info,-8(%ebp)
+	movl %eax,8(%ebx)
+	movl %ecx,-4(%ebp)
+	addl $-8,%ebp
+	jmp Pages_columnzugo_info
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(c8QF_info)+68
+	.long	1
+	.long	65568
+c8QF_info:
+.Lc8QF:
+	movl $c8QK_info,(%ebp)
+	movl %esi,8(%ebx)
+	jmp Pages_column2_info
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(c8QK_info)+68
+	.long	1
+	.long	65568
+c8QK_info:
+.Lc8QK:
+	movl %esi,16(%ebx)
+	movl 4(%ebp),%eax
+	movl %eax,8(%ebx)
+	addl $8,%ebp
+	jmp Pages_appendChildren1_info
+.Lc8QL:
+	movl %eax,16(%ebx)
+	movl %ecx,8(%ebx)
+	movl $Pages_column1_closure,%esi
+	jmp *-8(%ebx)
+.data
+	.align 4
+.align 1
+.globl Pages_column_closure
+Pages_column_closure:
+	.long	Pages_column_info
+	.long	0
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(Pages_column_info)+80
+	.long	196623
+	.long	0
+	.long	65551
+.globl Pages_column_info
+Pages_column_info:
+.Lc8R0:
+	movl 16(%ebx),%eax
+	movl %eax,16(%ebx)
+	movl 8(%ebx),%eax
+	movl %eax,8(%ebx)
+	jmp Pages_column1_info
+.data
+	.align 4
+.align 1
+.globl Pages_mkCanvas5_closure
+Pages_mkCanvas5_closure:
+	.long	Pages_mkCanvas5_info
+	.long	0
+.section .rodata
+	.align 4
+.align 1
+c8Rp_str:
+	.byte	99
+	.byte	97
+	.byte	110
+	.byte	118
+	.byte	97
+	.byte	115
+	.byte	0
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(Pages_mkCanvas5_info)+84
+	.long	65539
+	.long	0
+	.long	196623
+.globl Pages_mkCanvas5_info
+Pages_mkCanvas5_info:
+.Lc8Rs:
+	leal -8(%ebp),%eax
+	cmpl 840(%ebx),%eax
+	jb .Lc8RQ
+.Lc8RR:
+	movl $c8Rq_info,-4(%ebp)
+	movl $c8Rp_str,8(%ebx)
+	addl $-4,%ebp
+	jmp ghczmprim_GHCziCString_unpackCStringzh_info
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(c8Rq_info)+84
+	.long	0
+	.long	65568
+c8Rq_info:
+.Lc8Rq:
+	movl $c8Rv_info,(%ebp)
+	jmp toJSStr
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(c8Rv_info)+84
+	.long	0
+	.long	65568
+c8Rv_info:
+.Lc8Rv:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8RV
+.Lc8RU:
+	movl $ghczmprim_GHCziTypes_Izh_con_info,-4(%edi)
+	movl %esi,(%edi)
+	movl $c8RF_info,-4(%ebp)
+	movl $FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziJSString_newElemzuf1_closure,%esi
+	movl (%edi),%eax
+	movl %eax,(%ebp)
+	addl $-4,%ebp
+	testw $7,%si
+	jne .Lc8RF
+.Lc8RG:
+	jmp *(%esi)
+.text
+	.align 4,0x90
+	.long	65
+	.long	32
+c8RF_info:
+.Lc8RF:
+	movl 4(%ebp),%eax
+	movl $c8RN_info,4(%ebp)
+	addl $4,%ebp
+	movl 3(%esi),%ecx
+	movl 872(%ebx),%edx
+	movl %ecx,64(%esp)
+	movl 20(%edx),%ecx
+	movl %ebp,12(%ecx)
+	movl 888(%ebx),%ecx
+	movl %eax,76(%esp)
+	leal 4(%edi),%eax
+	movl %eax,8(%ecx)
+	movl 100(%edx),%eax
+	movl %eax,88(%esp)
+	movl 104(%edx),%eax
+	movl %eax,100(%esp)
+	leal 4(%edi),%eax
+	subl (%ecx),%eax
+	xorl %ecx,%ecx
+	movl %ecx,112(%esp)
+	movl 88(%esp),%ecx
+	subl %eax,%ecx
+	movl 100(%esp),%eax
+	movl %ecx,124(%esp)
+	movl 112(%esp),%ecx
+	sbbl %ecx,%eax
+	movl 124(%esp),%ecx
+	movl %ecx,100(%edx)
+	movl %eax,104(%edx)
+	subl $4,%esp
+	pushl $0
+	pushl %ebx
+	call suspendThread
+	addl $12,%esp
+	subl $4,%esp
+	movl 80(%esp),%ecx
+	pushl %ecx
+	movl 72(%esp),%ecx
+	pushl %ecx
+	movl %eax,148(%esp)
+	call __app1
+	addl $12,%esp
+	subl $8,%esp
+	movl 144(%esp),%ecx
+	pushl %ecx
+	movl %eax,160(%esp)
+	call resumeThread
+	addl $12,%esp
+	movl %eax,%ebx
+	movl 872(%ebx),%eax
+	movl 20(%eax),%ecx
+	movl 12(%ecx),%ebp
+	addl $104,%ecx
+	movl %ecx,840(%ebx)
+	movl $0,904(%ebx)
+	movl 888(%ebx),%ecx
+	movl 8(%ecx),%edx
+	leal -4(%edx),%edi
+	movl %eax,160(%esp)
+	movl (%ecx),%eax
+	movl 48(%ecx),%ecx
+	shll $12,%ecx
+	decl %ecx
+	movl %ecx,172(%esp)
+	movl %eax,%ecx
+	movl %edx,184(%esp)
+	movl 172(%esp),%edx
+	addl %edx,%ecx
+	movl %ecx,856(%ebx)
+	movl 160(%esp),%ecx
+	movl 100(%ecx),%edx
+	movl 104(%ecx),%ecx
+	movl %ecx,196(%esp)
+	movl 184(%esp),%ecx
+	subl %eax,%ecx
+	xorl %eax,%eax
+	addl %ecx,%edx
+	movl 196(%esp),%ecx
+	adcl %eax,%ecx
+	movl 160(%esp),%eax
+	movl %edx,100(%eax)
+	movl %ecx,104(%eax)
+	movl 148(%esp),%eax
+	movl %eax,%esi
+	jmp *(%ebp)
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8RN_info:
+.Lc8RN:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8S0
+.Lc8RZ:
+	movl $base_GHCziPtr_Ptr_con_info,-4(%edi)
+	movl %esi,(%edi)
+	leal -3(%edi),%esi
+	addl $4,%ebp
+	jmp *(%ebp)
+.Lc8RQ:
+	movl $Pages_mkCanvas5_closure,%esi
+	jmp *-8(%ebx)
+.Lc8RV:
+	movl $8,904(%ebx)
+	jmp stg_gc_unbx_r1
+.Lc8S0:
+	movl $8,904(%ebx)
+	jmp stg_gc_unbx_r1
+.data
+	.align 4
+.align 1
+.globl Pages_mkCanvas4_closure
+Pages_mkCanvas4_closure:
+	.long	Pages_mkCanvas4_info
+	.long	0
+	.long	0
+	.long	0
+.section .rodata
+	.align 4
+.align 1
+c8ST_str:
+	.byte	98
+	.byte	111
+	.byte	114
+	.byte	100
+	.byte	101
+	.byte	114
+	.byte	0
+.section .rodata
+	.align 4
+.align 1
+c8T9_str:
+	.byte	49
+	.byte	112
+	.byte	120
+	.byte	32
+	.byte	115
+	.byte	111
+	.byte	108
+	.byte	105
+	.byte	100
+	.byte	32
+	.byte	98
+	.byte	108
+	.byte	97
+	.byte	99
+	.byte	107
+	.byte	0
+.text
+	.align 4,0x90
+	.long	0
+	.long	22
+.globl Pages_mkCanvas4_info
+Pages_mkCanvas4_info:
+.Lc8SW:
+	leal -20(%ebp),%eax
+	cmpl 840(%ebx),%eax
+	jb .Lc8Tq
+.Lc8Tr:
+	subl $4,%esp
+	pushl %esi
+	pushl %ebx
+	call newCAF
+	addl $12,%esp
+	testl %eax,%eax
+	je .Lc8SS
+.Lc8SR:
+	movl $stg_bh_upd_frame_info,-12(%ebp)
+	movl %eax,-8(%ebp)
+	movl $c8SU_info,-16(%ebp)
+	movl $c8ST_str,8(%ebx)
+	addl $-16,%ebp
+	jmp ghczmprim_GHCziCString_unpackCStringzh_info
+.Lc8SS:
+	jmp *(%esi)
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8SU_info:
+.Lc8SU:
+	movl $c8SZ_info,(%ebp)
+	jmp toJSStr
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8SZ_info:
+.Lc8SZ:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8Tv
+.Lc8Tu:
+	movl $ghczmprim_GHCziTypes_Izh_con_info,-4(%edi)
+	movl %esi,(%edi)
+	movl $c8Ta_info,-4(%ebp)
+	movl $c8T9_str,8(%ebx)
+	movl (%edi),%eax
+	movl %eax,(%ebp)
+	addl $-4,%ebp
+	jmp ghczmprim_GHCziCString_unpackCStringzh_info
+.text
+	.align 4,0x90
+	.long	65
+	.long	32
+c8Ta_info:
+.Lc8Ta:
+	movl $c8Te_info,(%ebp)
+	jmp toJSStr
+.text
+	.align 4,0x90
+	.long	65
+	.long	32
+c8Te_info:
+.Lc8Te:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8TA
+.Lc8Tz:
+	movl $ghczmprim_GHCziTypes_Izh_con_info,-4(%edi)
+	movl %esi,(%edi)
+	movl 4(%ebp),%eax
+	leal -3(%edi),%ecx
+.Lc8Tm:
+	addl $20,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8TD
+.Lc8TC:
+	movl 3(%ecx),%ecx
+	movl $FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziCore_StyleName_con_info,-16(%edi)
+	movl %eax,-12(%edi)
+	movl $FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziCore_Attribute_con_info,-8(%edi)
+	leal -14(%edi),%eax
+	movl %eax,-4(%edi)
+	movl %ecx,(%edi)
+	leal -7(%edi),%esi
+	addl $8,%ebp
+	jmp *(%ebp)
+.text
+	.align 4,0x90
+	.long	65
+	.long	32
+c8Tl_info:
+.Lc8Tl:
+	movl 4(%ebp),%eax
+	movl %esi,%ecx
+	jmp .Lc8Tm
+.Lc8Tq:
+	jmp *-16(%ebx)
+.Lc8Tv:
+	movl $8,904(%ebx)
+	jmp stg_gc_unbx_r1
+.Lc8TA:
+	movl $8,904(%ebx)
+	jmp stg_gc_unbx_r1
+.Lc8TD:
+	movl $20,904(%ebx)
+	movl $c8Tl_info,(%ebp)
+	movl %ecx,%esi
+	jmp stg_gc_unpt_r1
+.data
+	.align 4
+.align 1
+.globl Pages_mkCanvas3_closure
+Pages_mkCanvas3_closure:
+	.long	Pages_mkCanvas3_info
+	.long	0
+	.long	0
+	.long	0
+.section .rodata
+	.align 4
+.align 1
+c8Ub_str:
+	.byte	98
+	.byte	97
+	.byte	99
+	.byte	107
+	.byte	103
+	.byte	114
+	.byte	111
+	.byte	117
+	.byte	110
+	.byte	100
+	.byte	67
+	.byte	111
+	.byte	108
+	.byte	111
+	.byte	114
+	.byte	0
+.section .rodata
+	.align 4
+.align 1
+c8Ur_str:
+	.byte	119
+	.byte	104
+	.byte	105
+	.byte	116
+	.byte	101
+	.byte	0
+.text
+	.align 4,0x90
+	.long	0
+	.long	22
+.globl Pages_mkCanvas3_info
+Pages_mkCanvas3_info:
+.Lc8Ue:
+	leal -20(%ebp),%eax
+	cmpl 840(%ebx),%eax
+	jb .Lc8UI
+.Lc8UJ:
+	subl $4,%esp
+	pushl %esi
+	pushl %ebx
+	call newCAF
+	addl $12,%esp
+	testl %eax,%eax
+	je .Lc8Ua
+.Lc8U9:
+	movl $stg_bh_upd_frame_info,-12(%ebp)
+	movl %eax,-8(%ebp)
+	movl $c8Uc_info,-16(%ebp)
+	movl $c8Ub_str,8(%ebx)
+	addl $-16,%ebp
+	jmp ghczmprim_GHCziCString_unpackCStringzh_info
+.Lc8Ua:
+	jmp *(%esi)
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8Uc_info:
+.Lc8Uc:
+	movl $c8Uh_info,(%ebp)
+	jmp toJSStr
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8Uh_info:
+.Lc8Uh:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8UN
+.Lc8UM:
+	movl $ghczmprim_GHCziTypes_Izh_con_info,-4(%edi)
+	movl %esi,(%edi)
+	movl $c8Us_info,-4(%ebp)
+	movl $c8Ur_str,8(%ebx)
+	movl (%edi),%eax
+	movl %eax,(%ebp)
+	addl $-4,%ebp
+	jmp ghczmprim_GHCziCString_unpackCStringzh_info
+.text
+	.align 4,0x90
+	.long	65
+	.long	32
+c8Us_info:
+.Lc8Us:
+	movl $c8Uw_info,(%ebp)
+	jmp toJSStr
+.text
+	.align 4,0x90
+	.long	65
+	.long	32
+c8Uw_info:
+.Lc8Uw:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8US
+.Lc8UR:
+	movl $ghczmprim_GHCziTypes_Izh_con_info,-4(%edi)
+	movl %esi,(%edi)
+	movl 4(%ebp),%eax
+	leal -3(%edi),%ecx
+.Lc8UE:
+	addl $20,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8UV
+.Lc8UU:
+	movl 3(%ecx),%ecx
+	movl $FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziCore_StyleName_con_info,-16(%edi)
+	movl %eax,-12(%edi)
+	movl $FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziCore_Attribute_con_info,-8(%edi)
+	leal -14(%edi),%eax
+	movl %eax,-4(%edi)
+	movl %ecx,(%edi)
+	leal -7(%edi),%esi
+	addl $8,%ebp
+	jmp *(%ebp)
+.text
+	.align 4,0x90
+	.long	65
+	.long	32
+c8UD_info:
+.Lc8UD:
+	movl 4(%ebp),%eax
+	movl %esi,%ecx
+	jmp .Lc8UE
+.Lc8UI:
+	jmp *-16(%ebx)
+.Lc8UN:
+	movl $8,904(%ebx)
+	jmp stg_gc_unbx_r1
+.Lc8US:
+	movl $8,904(%ebx)
+	jmp stg_gc_unbx_r1
+.Lc8UV:
+	movl $20,904(%ebx)
+	movl $c8UD_info,(%ebp)
+	movl %ecx,%esi
+	jmp stg_gc_unpt_r1
+.data
+	.align 4
+.align 1
+.globl Pages_mkCanvas2_closure
+Pages_mkCanvas2_closure:
+	.long	Pages_mkCanvas2_info
+	.long	0
+	.long	0
+	.long	0
+.section .rodata
+	.align 4
+.align 1
+c8Vk_str:
+	.byte	119
+	.byte	105
+	.byte	100
+	.byte	116
+	.byte	104
+	.byte	0
+.text
+	.align 4,0x90
+	.long	0
+	.long	22
+.globl Pages_mkCanvas2_info
+Pages_mkCanvas2_info:
+.Lc8Vn:
+	leal -16(%ebp),%eax
+	cmpl 840(%ebx),%eax
+	jb .Lc8VB
+.Lc8VC:
+	subl $4,%esp
+	pushl %esi
+	pushl %ebx
+	call newCAF
+	addl $12,%esp
+	testl %eax,%eax
+	je .Lc8Vj
+.Lc8Vi:
+	movl $stg_bh_upd_frame_info,-12(%ebp)
+	movl %eax,-8(%ebp)
+	movl $c8Vl_info,-16(%ebp)
+	movl $c8Vk_str,8(%ebx)
+	addl $-16,%ebp
+	jmp ghczmprim_GHCziCString_unpackCStringzh_info
+.Lc8Vj:
+	jmp *(%esi)
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8Vl_info:
+.Lc8Vl:
+	movl $c8Vq_info,(%ebp)
+	jmp toJSStr
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8Vq_info:
+.Lc8Vq:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8VG
+.Lc8VF:
+	movl $ghczmprim_GHCziTypes_Izh_con_info,-4(%edi)
+	movl %esi,(%edi)
+	leal -3(%edi),%eax
+.Lc8Vy:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8VJ
+.Lc8VI:
+	movl 3(%eax),%eax
+	movl $FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziCore_PropName_con_info,-4(%edi)
+	movl %eax,(%edi)
+	leal -3(%edi),%esi
+	addl $4,%ebp
+	jmp *(%ebp)
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8Vx_info:
+.Lc8Vx:
+	movl %esi,%eax
+	jmp .Lc8Vy
+.Lc8VB:
+	jmp *-16(%ebx)
+.Lc8VG:
+	movl $8,904(%ebx)
+	jmp stg_gc_unbx_r1
+.Lc8VJ:
+	movl $8,904(%ebx)
+	movl $c8Vx_info,(%ebp)
+	movl %eax,%esi
+	jmp stg_gc_unpt_r1
+.data
+	.align 4
+.align 1
+.globl Pages_mkCanvas1_closure
+Pages_mkCanvas1_closure:
+	.long	Pages_mkCanvas1_info
+	.long	0
+	.long	0
+	.long	0
+.section .rodata
+	.align 4
+.align 1
+c8W5_str:
+	.byte	104
+	.byte	101
+	.byte	105
+	.byte	103
+	.byte	104
+	.byte	116
+	.byte	0
+.text
+	.align 4,0x90
+	.long	0
+	.long	22
+.globl Pages_mkCanvas1_info
+Pages_mkCanvas1_info:
+.Lc8W8:
+	leal -16(%ebp),%eax
+	cmpl 840(%ebx),%eax
+	jb .Lc8Wm
+.Lc8Wn:
+	subl $4,%esp
+	pushl %esi
+	pushl %ebx
+	call newCAF
+	addl $12,%esp
+	testl %eax,%eax
+	je .Lc8W4
+.Lc8W3:
+	movl $stg_bh_upd_frame_info,-12(%ebp)
+	movl %eax,-8(%ebp)
+	movl $c8W6_info,-16(%ebp)
+	movl $c8W5_str,8(%ebx)
+	addl $-16,%ebp
+	jmp ghczmprim_GHCziCString_unpackCStringzh_info
+.Lc8W4:
+	jmp *(%esi)
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8W6_info:
+.Lc8W6:
+	movl $c8Wb_info,(%ebp)
+	jmp toJSStr
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8Wb_info:
+.Lc8Wb:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8Wr
+.Lc8Wq:
+	movl $ghczmprim_GHCziTypes_Izh_con_info,-4(%edi)
+	movl %esi,(%edi)
+	leal -3(%edi),%eax
+.Lc8Wj:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8Wu
+.Lc8Wt:
+	movl 3(%eax),%eax
+	movl $FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziCore_PropName_con_info,-4(%edi)
+	movl %eax,(%edi)
+	leal -3(%edi),%esi
+	addl $4,%ebp
+	jmp *(%ebp)
+.text
+	.align 4,0x90
+	.long	0
+	.long	32
+c8Wi_info:
+.Lc8Wi:
+	movl %esi,%eax
+	jmp .Lc8Wj
+.Lc8Wm:
+	jmp *-16(%ebx)
+.Lc8Wr:
+	movl $8,904(%ebx)
+	jmp stg_gc_unbx_r1
+.Lc8Wu:
+	movl $8,904(%ebx)
+	movl $c8Wi_info,(%ebp)
+	movl %eax,%esi
+	jmp stg_gc_unpt_r1
+.data
+	.align 4
+.align 1
+.globl Pages_mkCanvas_closure
+Pages_mkCanvas_closure:
+	.long	Pages_mkCanvas_info
+	.long	0
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(s8xJ_info)+92
+	.long	1
+	.long	65553
+s8xJ_info:
+.Lc8Xj:
+	leal -20(%ebp),%eax
+	cmpl 840(%ebx),%eax
+	jb .Lc8XG
+.Lc8XH:
+	movl $stg_upd_frame_info,-12(%ebp)
+	movl %esi,-8(%ebp)
+	movl $c8Xg_info,-20(%ebp)
+	movl 12(%esi),%eax
+	movl $Pages_mkCanvas1_closure,%esi
+	movl %eax,-16(%ebp)
+	addl $-20,%ebp
+	testw $7,%si
+	jne .Lc8Xg
+.Lc8Xh:
+	jmp *(%esi)
+.text
+	.align 4,0x90
+	.long	1
+	.long	32
+c8Xg_info:
+.Lc8Xg:
+	movl $c8Xm_info,(%ebp)
+	movl %esi,%eax
+	movl 4(%ebp),%esi
+	movl %eax,4(%ebp)
+	testw $7,%si
+	jne .Lc8Xm
+.Lc8Xn:
+	jmp *(%esi)
+.text
+	.align 4,0x90
+	.long	1
+	.long	32
+c8Xm_info:
+.Lc8Xm:
+	movl $c8Xr_info,(%ebp)
+	movl $ghczmprim_GHCziTypes_ZMZN_closure+1,24(%ebx)
+	movl 3(%esi),%eax
+	movl %eax,16(%ebx)
+	movl $0,8(%ebx)
+	jmp base_GHCziShow_zdwshowSignedInt_info
+.text
+	.align 4,0x90
+	.long	1
+	.long	32
+c8Xr_info:
+.Lc8Xr:
+	movl $c8Xv_info,(%ebp)
+	jmp toJSStr
+.text
+	.align 4,0x90
+	.long	1
+	.long	32
+c8Xv_info:
+.Lc8Xv:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8XN
+.Lc8XM:
+	movl $ghczmprim_GHCziTypes_Izh_con_info,-4(%edi)
+	movl %esi,(%edi)
+	movl 4(%ebp),%eax
+	leal -3(%edi),%ecx
+.Lc8XD:
+	addl $12,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8XQ
+.Lc8XP:
+	movl 3(%ecx),%ecx
+	movl $FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziCore_Attribute_con_info,-8(%edi)
+	movl %eax,-4(%edi)
+	movl %ecx,(%edi)
+	leal -7(%edi),%esi
+	addl $8,%ebp
+	jmp *(%ebp)
+.text
+	.align 4,0x90
+	.long	1
+	.long	32
+c8XC_info:
+.Lc8XC:
+	movl 4(%ebp),%eax
+	movl %esi,%ecx
+	jmp .Lc8XD
+.Lc8XG:
+	jmp *-16(%ebx)
+.Lc8XN:
+	movl $8,904(%ebx)
+	jmp stg_gc_unbx_r1
+.Lc8XQ:
+	movl $12,904(%ebx)
+	movl $c8XC_info,(%ebp)
+	movl %ecx,%esi
+	jmp stg_gc_unpt_r1
+.text
+	.align 4,0x90
+	.long	S8yY_srt-(s8xA_info)+96
+	.long	1
+	.long	65553
+s8xA_info:
+.Lc8XZ:
+	leal -20(%ebp),%eax
+	cmpl 840(%ebx),%eax
+	jb .Lc8Ym
+.Lc8Yn:
+	movl $stg_upd_frame_info,-12(%ebp)
+	movl %esi,-8(%ebp)
+	movl $c8XW_info,-20(%ebp)
+	movl 12(%esi),%eax
+	movl $Pages_mkCanvas2_closure,%esi
+	movl %eax,-16(%ebp)
+	addl $-20,%ebp
+	testw $7,%si
+	jne .Lc8XW
+.Lc8XX:
+	jmp *(%esi)
+.text
+	.align 4,0x90
+	.long	1
+	.long	32
+c8XW_info:
+.Lc8XW:
+	movl $c8Y2_info,(%ebp)
+	movl %esi,%eax
+	movl 4(%ebp),%esi
+	movl %eax,4(%ebp)
+	testw $7,%si
+	jne .Lc8Y2
+.Lc8Y3:
+	jmp *(%esi)
+.text
+	.align 4,0x90
+	.long	1
+	.long	32
+c8Y2_info:
+.Lc8Y2:
+	movl $c8Y7_info,(%ebp)
+	movl $ghczmprim_GHCziTypes_ZMZN_closure+1,24(%ebx)
+	movl 3(%esi),%eax
+	movl %eax,16(%ebx)
+	movl $0,8(%ebx)
+	jmp base_GHCziShow_zdwshowSignedInt_info
+.text
+	.align 4,0x90
+	.long	1
+	.long	32
+c8Y7_info:
+.Lc8Y7:
+	movl $c8Yb_info,(%ebp)
+	jmp toJSStr
+.text
+	.align 4,0x90
+	.long	1
+	.long	32
+c8Yb_info:
+.Lc8Yb:
+	addl $8,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8Yt
+.Lc8Ys:
+	movl $ghczmprim_GHCziTypes_Izh_con_info,-4(%edi)
+	movl %esi,(%edi)
+	movl 4(%ebp),%eax
+	leal -3(%edi),%ecx
+.Lc8Yj:
+	addl $12,%edi
+	cmpl 856(%ebx),%edi
+	ja .Lc8Yw
+.Lc8Yv:
+	movl 3(%ecx),%ecx
+	movl $FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziCore_Attribute_con_info,-8(%edi)
+	movl %eax,-4(%edi)
+	movl %ecx,(%edi)
+	leal -7(%edi),%esi
+	addl $8,%ebp
+	jmp *(%ebp)
+.text
+	.align 4,0x90
+	.long	1
+	.long	32
+c8Yi_info:
+.Lc8Yi:
+	movl 4(%ebp),%eax
+	movl %esi,%ecx
+	jmp .Lc8Yj
+.Lc8Ym:
+	jmp *-16(%ebx)
+.Lc8Yt:
+	movl $8,904(%ebx)
+	jmp stg_gc_unbx_r1
+.Lc8Yw:
+	movl $12,904(%ebx)
+	movl $c8Yi_info,(%ebp)
+	movl %ecx,%esi
+	jmp stg_gc_unpt_r1
+.section .data
+	.align 4
+.align 1
+u8YF_srtd:
+	.long	S8yY_srt+20
+	.long	23
+	.long	8257541
+.text
+	.align 4,0x90
+	.long	u8YF_srtd-(Pages_mkCanvas_info)+0
+	.long	131087
+	.long	0
+	.long	-65521
+.globl Pages_mkCanvas_info
+Pages_mkCanvas_info:
+.Lc8YA:
+	addl $80,%edi
+	movl 16(%ebx),%eax
+	movl 8(%ebx),%ecx
+	cmpl 856(%ebx),%edi
+	ja .Lc8YE
+.Lc8YD:
+	movl $s8xJ_info,-76(%edi)
+	movl %eax,-64(%edi)
+	movl $ghczmprim_GHCziTypes_ZC_con_info,-60(%edi)
+	leal -76(%edi),%eax
+	movl %eax,-56(%edi)
+	movl $ghczmprim_GHCziTypes_ZMZN_closure+1,-52(%edi)
+	movl $s8xA_info,-48(%edi)
+	movl %ecx,-36(%edi)
+	movl $ghczmprim_GHCziTypes_ZC_con_info,-32(%edi)
+	leal -48(%edi),%eax
+	movl %eax,-28(%edi)
+	leal -58(%edi),%eax
+	movl %eax,-24(%edi)
+	movl $ghczmprim_GHCziTypes_ZC_con_info,-20(%edi)
+	movl $Pages_mkCanvas3_closure,-16(%edi)
+	leal -30(%edi),%eax
+	movl %eax,-12(%edi)
+	movl $ghczmprim_GHCziTypes_ZC_con_info,-8(%edi)
+	movl $Pages_mkCanvas4_closure,-4(%edi)
+	leal -18(%edi),%eax
+	movl %eax,(%edi)
+	leal -6(%edi),%eax
+	movl %eax,32(%ebx)
+	movl $Pages_mkCanvas5_closure+1,24(%ebx)
+	movl $LlHybR7LOSS7VAc0pG6N16_ControlziMonadziIOziClass_zdfMonadIOIO_closure,16(%ebx)
+	movl $FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziCore_zdfIsElemElem_closure,8(%ebx)
+	jmp FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziCore_with_info
+.Lc8YE:
+	movl $80,904(%ebx)
+	movl %eax,16(%ebx)
+	movl %ecx,8(%ebx)
+	movl $Pages_mkCanvas_closure,%esi
+	jmp *-8(%ebx)
+.section .data
+	.align 4
+.align 1
+S8yY_srt:
+	.long	Pages_selectzuf1_closure
+	.long	FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziJSString_newElemzuf1_closure
+	.long	Pages_mkDiv1_closure
+	.long	Pages_mkHTML2_closure
+	.long	Pages_mkHTML1_closure
+	.long	FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziCore_with_closure
+	.long	Pages_mkHTML_closure
+	.long	LlHybR7LOSS7VAc0pG6N16_ControlziMonadziIOziClass_zdfMonadIOIO_closure
+	.long	Pages_mkButton2_closure
+	.long	Pages_mkButton1_closure
+	.long	Pages_mkButton_closure
+	.long	Pages_mkInput4_closure
+	.long	Pages_mkInput1_closure
+	.long	Pages_mkInput2_closure
+	.long	Pages_mkInput_closure
+	.long	Pages_mkInput3_closure
+	.long	FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziCore_appendChildzuf1_closure
+	.long	Pages_appendChildren1_closure
+	.long	Pages_wrapDiv_closure
+	.long	Pages_columnzugo_closure
+	.long	Pages_column1_closure
+	.long	FxthDgO5vhFC0dVxe1OwkF_HasteziDOMziJSString_newElemzuf1_closure
+	.long	Pages_mkCanvas5_closure
+	.long	Pages_mkCanvas1_closure
+	.long	Pages_mkCanvas2_closure
+	.long	Pages_mkCanvas_closure
+	.long	Pages_mkCanvas3_closure
+	.long	Pages_mkCanvas4_closure
+.ident "GHC 7.10.2"
+
