@@ -59,31 +59,35 @@ factor = char '(' *> expr <* char ')' <|> num <|>
 
 simplify :: Expr -> Expr
 simplify e = case e of 
-        (Num e')                -> Num e'
+        (Num e')                 -> Num e'
         (Add (Num 0) e')         -> simplify e'
         (Add e' (Num 0))         -> simplify e'
-        (Mul (Num 0) _)         -> Num 0
-        (Mul _ (Num 0))         -> Num 0
+        (Mul (Num 0) _)          -> Num 0
+        (Mul _ (Num 0))          -> Num 0
         (Mul (Num 1) e')         -> simplify e'
         (Mul e' (Num 1))         -> simplify e'
-        (Add (Num n) (Num m))   -> Num (n+m)
-        (Add e1 e2)             -> (Add (simplify e1) (simplify e2))
-        (Mul (Num n) (Num m))   -> Num (n*m)
-        (Mul e1 e2)             -> (Mul (simplify e1) (simplify e2))
+        (Add (Num n) (Num m))    -> Num (n+m)
+        (Add e1 e2)              -> (Add (simplify e1) (simplify e2))
+        (Mul (Num n) (Num m))    -> Num (n*m)
+        (Mul e1 e2)              -> (Mul (simplify e1) (simplify e2))
         (Sin e')                 -> (Sin (simplify e'))
         (Cos e')                 -> (Cos (simplify e'))    
-        otherwise               -> e
-
+        otherwise                -> e
 
 
 differentiate :: Expr -> Expr
-differentiate e = case e of
-    (Num n)           -> Num 0
-    (Var x)           -> Num 1
-    (Add e1 e2)       -> (Add (differentiate e1) (differentiate e2))
-    (Mul e1 e2)       -> (Add (Mul e1 (differentiate e2)) 
-                              (Mul (differentiate e1) e2))
-    (Sin e)           -> (Cos e)
-    (Cos e)           -> (Mul (Num (-1)) (Sin e))
+differentiate e = simplify (differentiate' e)
+  where
+    differentiate' :: Expr -> Expr
+    differentiate' e = case e of
+      (Num n)           -> Num 0
+      (Var x)           -> Num 1
+      (Add e1 e2)       -> (Add (differentiate' e1) (differentiate' e2))
+      (Mul e1 e2)       -> (Add (Mul e1 (differentiate' e2)) 
+                              (Mul (differentiate' e1) e2))
+      (Sin e)           -> (Cos e)
+      (Cos e)           -> (Mul (Num (-1)) (Sin e))
+
+
 
 
