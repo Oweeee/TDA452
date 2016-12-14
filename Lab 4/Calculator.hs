@@ -19,10 +19,16 @@ canHeight = 300
 readAndDraw :: Elem -> Canvas -> IO ()
 readAndDraw e c = do 
                 Just exp  <- (getValue e)
-                --p       <- path(points ((fromJust) readExpr exp) 0.04 (canWidth, canHeight))
-                --pic     <- stroke path(points ((fromJust) readExpr exp) 0.04 (canWidth, canHeight))
                 render    <- (render c (stroke (path (points (fromJust (readExpr exp)) 0.04 (canWidth, canHeight)))))
                 return render
+
+zoom :: Elem -> Elem -> Canvas -> IO()
+zoom expr zoom c = do
+                Just exp   <- (getValue expr)
+                Just zoom' <- (getValue zoom)
+                render     <- (render c (stroke (path (points (fromJust (readExpr exp)) zoom'*0.04 (canWidth, canHeight)))))
+                return render
+
 
 main = do
     -- Elements
@@ -30,6 +36,8 @@ main = do
     fx      <- mkHTML "<i>f</i>(<i>x</i>)="  -- The text "f(x)="
     input   <- mkInput 20 "x"                -- The formula input
     draw    <- mkButton "Draw graph"         -- The draw button
+    zoom    <- mkInput 20 "Enter zoom value"
+    doZoom  <- mkButton "Zoom"
       -- The markup "<i>...</i>" means that the text inside should be rendered
       -- in italics.
 
@@ -49,6 +57,7 @@ main = do
     Just can <- getCanvas canvas
     onEvent draw  Click $ \_    -> readAndDraw input can
     onEvent input KeyUp $ \code -> when (code==13) $ readAndDraw input can
+    onEvent input Zoom  $ \_    -> zoom input zoom can
       -- "Enter" key has code 13
 
 points :: Expr -> Double -> (Int, Int) -> [Point]
