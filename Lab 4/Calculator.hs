@@ -44,3 +44,6 @@ main = do
     onEvent input KeyUp $ \code -> when (code==13) $ readAndDraw input can
       -- "Enter" key has code 13
 
+points :: Expr -> Double -> (Int, Int) -> [Point]
+points e scale (w,h) = [(x, (eval e x)) |
+             x <- [(scale*(-((fromIntegral w)/2)))..(scale*((fromIntegral w)/2))]]
