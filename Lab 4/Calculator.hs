@@ -9,13 +9,20 @@ import Pages
 
 import Expr
 
+import Data.Maybe
+
 
 
 canWidth  = 300
 canHeight = 300
 
 readAndDraw :: Elem -> Canvas -> IO ()
-readAndDraw = undefined
+readAndDraw e c = do 
+                Just exp  <- (getValue e)
+                --p       <- path(points ((fromJust) readExpr exp) 0.04 (canWidth, canHeight))
+                --pic     <- stroke path(points ((fromJust) readExpr exp) 0.04 (canWidth, canHeight))
+                render    <- (render c (stroke (path (points (fromJust (readExpr exp)) 0.04 (canWidth, canHeight)))))
+                return render
 
 main = do
     -- Elements
@@ -45,5 +52,13 @@ main = do
       -- "Enter" key has code 13
 
 points :: Expr -> Double -> (Int, Int) -> [Point]
-points e scale (w,h) = [(x, (eval e x)) |
-             x <- [(scale*(-((fromIntegral w)/2)))..(scale*((fromIntegral w)/2))]]
+points e scale (w,h) = [((fromIntegral x), (realToPix (eval e (pixToReal (fromIntegral x))))) 
+        | x <- [0..w]]
+            where
+                -- converts a pixel x-coordinate to a real x-coordinate
+                pixToReal :: Double -> Double
+                pixToReal x = scale*(x-((fromIntegral w)/2))
+
+                -- converts a real y-coordinate to a pixel y-coordinate
+                realToPix :: Double -> Double
+                realToPix y = (-(y/scale))+((fromIntegral h)/2)
