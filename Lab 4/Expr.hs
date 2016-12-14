@@ -59,18 +59,19 @@ factor = char '(' *> expr <* char ')' <|> num <|>
 
 simplify :: Expr -> Expr
 simplify e = case e of 
-        (Add (Num 0) e)         -> simplify e
-        (Add e (Num 0))         -> simplify e
+        (Num e')                -> Num e'
+        (Add (Num 0) e')         -> simplify e'
+        (Add e' (Num 0))         -> simplify e'
         (Mul (Num 0) _)         -> Num 0
         (Mul _ (Num 0))         -> Num 0
-        (Mul (Num 1) e)         -> simplify e
-        (Mul e (Num 1))         -> simplify e
+        (Mul (Num 1) e')         -> simplify e'
+        (Mul e' (Num 1))         -> simplify e'
         (Add (Num n) (Num m))   -> Num (n+m)
         (Add e1 e2)             -> (Add (simplify e1) (simplify e2))
         (Mul (Num n) (Num m))   -> Num (n*m)
         (Mul e1 e2)             -> (Mul (simplify e1) (simplify e2))
-        (Sin e)                 -> (Sin (simplify e))
-        (Cos e)                 -> (Cos (simplify e))    
+        (Sin e')                 -> (Sin (simplify e'))
+        (Cos e')                 -> (Cos (simplify e'))    
         otherwise               -> e
 
 
