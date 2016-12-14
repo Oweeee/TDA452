@@ -1,6 +1,7 @@
 module ExprQC where
 
 import Expr
+import Test.QuickCheck
 
 prop_ShowReadExpr :: Expr -> Bool
 prop_ShowReadExpr e = let s = showExpr e
