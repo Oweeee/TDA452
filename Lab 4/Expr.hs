@@ -56,9 +56,12 @@ var = Var <$> (char 'x')
 factor = char '(' *> expr <* char ')' <|> num <|> 
          sinFunc <|> cosFunc <|> var
 
-
 simplify :: Expr -> Expr
-simplify e = case e of 
+simplify e | e == simplify' e = e
+simplify e = simplify' e
+
+simplify' :: Expr -> Expr
+simplify' e = case e of 
         (Num e')                 -> Num e'
         (Add (Num 0) e')         -> simplify e'
         (Add e' (Num 0))         -> simplify e'
@@ -67,11 +70,11 @@ simplify e = case e of
         (Mul (Num 1) e')         -> simplify e'
         (Mul e' (Num 1))         -> simplify e'
         (Add (Num n) (Num m))    -> Num (n+m)
-        (Add e1 e2)              -> (Add (simplify e1) (simplify e2))
+        (Add e1 e2)              -> simplify (Add (simplify e1) (simplify e2))
         (Mul (Num n) (Num m))    -> Num (n*m)
-        (Mul e1 e2)              -> (Mul (simplify e1) (simplify e2))
-        (Sin e')                 -> (Sin (simplify e'))
-        (Cos e')                 -> (Cos (simplify e'))    
+        (Mul e1 e2)              -> simplify (Mul (simplify e1) (simplify e2))
+        (Sin e')                 -> simplify (Sin (simplify e'))
+        (Cos e')                 -> simplify (Cos (simplify e'))    
         otherwise                -> e
 
 
