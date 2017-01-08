@@ -8,6 +8,9 @@ prop_ShowReadExpr e = let s = showExpr e
                           Just e' = readExpr s
                       in showExpr e' == s
 
+prop_Simplify :: Expr -> Bool
+prop_Simplify e = (abs ((eval e 1) - (eval (simplify e) 1))) < 0.0001
+
 arbExpr :: Int -> Gen Expr
 arbExpr s = frequency [(1, rNum), (1, rVar), (s, rOp s), (s, rFunc s)]
     where
