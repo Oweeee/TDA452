@@ -60,7 +60,7 @@ main = do
     onEvent doZoom Click $ \_    -> zoom input zoomV can
     onEvent doDiff Click $ \_    -> do
                                     Just expr <- getValue input
-                                    set input [prop "value" =: (showExpr(differentiate (fromJust (readExpr expr))))]
+                                    set input [prop "value" =: (showExpr(simplify (differentiate (fromJust (readExpr expr)))))]
                                     readAndDraw input can
 
       -- "Enter" key has code 13
